@@ -1,0 +1,10 @@
+.venv/
+data/
+__pycache__/
+*.pyc
+.env
+.DS_Store
+.cursor/
+eval/runs/
+eval/external/
+eval/reports/*-misses.jsonl

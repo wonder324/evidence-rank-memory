@@ -1,0 +1,2724 @@
+{
+  "label": "probe-500-v4",
+  "embedder": "dashscope",
+  "scheme_pref": "1",
+  "scheme_hop": "1",
+  "hop_residence_bonus": "0.01",
+  "embedding_model": "text-embedding-v4",
+  "llm_extract_active": false,
+  "weights": {
+    "bm25": 1.15,
+    "dense": 0.45,
+    "overlap": 0.85,
+    "entity": 0.4,
+    "literal": 0.9,
+    "temporal": 0.7,
+    "kind": 0.55,
+    "hop": 0.35,
+    "option": 0.18,
+    "profile": 0.15
+  },
+  "probe_count": 503,
+  "recall_at_5": 0.9523,
+  "recall_at_100": 1.0,
+  "mrr": 0.9344,
+  "status_accuracy": 0.7217,
+  "by_category": {
+    "alias": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "cengjing-current": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "cengjing-history": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "chain-current": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "chain-previous": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "code": {
+      "n": 8,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "code-fn": {
+      "n": 15,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "email": {
+      "n": 25,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "en-current": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "en-history": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "en-hop": {
+      "n": 25,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 0.5,
+      "status_accuracy": 1.0
+    },
+    "en-job-current": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 0.0
+    },
+    "en-job-history": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 0.0
+    },
+    "flood": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "hop": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "isolation": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "job": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "move-qu-current": {
+      "n": 25,
+      "recall_at_5": 0.04,
+      "recall_at_100": 1.0,
+      "mrr": 0.18,
+      "status_accuracy": 0.0
+    },
+    "move-qu-history": {
+      "n": 25,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 0.0
+    },
+    "name": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "negation": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "phone": {
+      "n": 25,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "preference": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "quote": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "rename-current": {
+      "n": 25,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 0.0
+    },
+    "rename-history": {
+      "n": 25,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 0.0
+    },
+    "rule": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "time": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "two-likes": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "zh-current": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "zh-flood": {
+      "n": 25,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "zh-history": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    }
+  },
+  "failures": [
+    {
+      "user": "move-qu-0",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "南昌"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 无锡 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 无锡 事住 住在 在无. evidence: 同事住在无锡",
+        "user residence = 南京 (status=current, time=2023-11-14T23:13:20Z). entities: user 南京 我以 以前 前住 住在 在南. evidence: 我以前住在南京",
+        "Active profile:\n- user residence = 南京 (status=current, time=2023-11-14T23:13:20Z). entities: user 南京 我以 以前 前住 住在 在南\n- 同事 residence = 无锡 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-0",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "南京"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 南京 (status=current, time=2023-11-14T23:13:20Z). entities: user 南京 我以 以前 前住 住在 在南. evidence: 我以前住在南京",
+        "[2023-11-14T23:13:20Z] user: 我以前住在南京。",
+        "Active profile:\n- user residence = 南京 (status=current, time=2023-11-14T23:13:20Z). entities: user 南京 我以 以前 前住 住在 在南\n- 同事 residence = 无锡 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-1",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "广州"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 宁波 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 宁波 事住 住在 在宁. evidence: 同事住在宁波",
+        "user residence = 杭州 (status=current, time=2023-11-14T23:13:20Z). entities: user 杭州 我以 以前 前住 住在 在杭. evidence: 我以前住在杭州",
+        "Active profile:\n- user residence = 杭州 (status=current, time=2023-11-14T23:13:20Z). entities: user 杭州 我以 以前 前住 住在 在杭\n- 同事 residence = 宁波 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-1",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "杭州"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 杭州 (status=current, time=2023-11-14T23:13:20Z). entities: user 杭州 我以 以前 前住 住在 在杭. evidence: 我以前住在杭州",
+        "[2023-11-14T23:13:20Z] user: 我以前住在杭州。",
+        "Active profile:\n- user residence = 杭州 (status=current, time=2023-11-14T23:13:20Z). entities: user 杭州 我以 以前 前住 住在 在杭\n- 同事 residence = 宁波 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-2",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "深圳"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 合肥 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 合肥 事住 住在 在合. evidence: 同事住在合肥",
+        "user residence = 苏州 (status=current, time=2023-11-14T23:13:20Z). entities: user 苏州 我以 以前 前住 住在 在苏. evidence: 我以前住在苏州",
+        "Active profile:\n- user residence = 苏州 (status=current, time=2023-11-14T23:13:20Z). entities: user 苏州 我以 以前 前住 住在 在苏\n- 同事 residence = 合肥 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-2",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "苏州"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 苏州 (status=current, time=2023-11-14T23:13:20Z). entities: user 苏州 我以 以前 前住 住在 在苏. evidence: 我以前住在苏州",
+        "[2023-11-14T23:13:20Z] user: 我以前住在苏州。",
+        "Active profile:\n- user residence = 苏州 (status=current, time=2023-11-14T23:13:20Z). entities: user 苏州 我以 以前 前住 住在 在苏\n- 同事 residence = 合肥 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-3",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "珠海"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 福州 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 福州 事住 住在 在福. evidence: 同事住在福州",
+        "user residence = 无锡 (status=current, time=2023-11-14T23:13:20Z). entities: user 无锡 我以 以前 前住 住在 在无. evidence: 我以前住在无锡",
+        "Active profile:\n- user residence = 无锡 (status=current, time=2023-11-14T23:13:20Z). entities: user 无锡 我以 以前 前住 住在 在无\n- 同事 residence = 福州 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-3",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "无锡"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 无锡 (status=current, time=2023-11-14T23:13:20Z). entities: user 无锡 我以 以前 前住 住在 在无. evidence: 我以前住在无锡",
+        "[2023-11-14T23:13:20Z] user: 我以前住在无锡。",
+        "Active profile:\n- user residence = 无锡 (status=current, time=2023-11-14T23:13:20Z). entities: user 无锡 我以 以前 前住 住在 在无\n- 同事 residence = 福州 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-4",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "佛山"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 厦门 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 厦门 事住 住在 在厦. evidence: 同事住在厦门",
+        "user residence = 宁波 (status=current, time=2023-11-14T23:13:20Z). entities: user 宁波 我以 以前 前住 住在 在宁. evidence: 我以前住在宁波",
+        "Active profile:\n- user residence = 宁波 (status=current, time=2023-11-14T23:13:20Z). entities: user 宁波 我以 以前 前住 住在 在宁\n- 同事 residence = 厦门 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-4",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "宁波"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 宁波 (status=current, time=2023-11-14T23:13:20Z). entities: user 宁波 我以 以前 前住 住在 在宁. evidence: 我以前住在宁波",
+        "[2023-11-14T23:13:20Z] user: 我以前住在宁波。",
+        "Active profile:\n- user residence = 宁波 (status=current, time=2023-11-14T23:13:20Z). entities: user 宁波 我以 以前 前住 住在 在宁\n- 同事 residence = 厦门 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-5",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "东莞"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 青岛 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 青岛 事住 住在 在青. evidence: 同事住在青岛",
+        "user residence = 合肥 (status=current, time=2023-11-14T23:13:20Z). entities: user 合肥 我以 以前 前住 住在 在合. evidence: 我以前住在合肥",
+        "Active profile:\n- user residence = 合肥 (status=current, time=2023-11-14T23:13:20Z). entities: user 合肥 我以 以前 前住 住在 在合\n- 同事 residence = 青岛 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-5",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "合肥"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 合肥 (status=current, time=2023-11-14T23:13:20Z). entities: user 合肥 我以 以前 前住 住在 在合. evidence: 我以前住在合肥",
+        "[2023-11-14T23:13:20Z] user: 我以前住在合肥。",
+        "Active profile:\n- user residence = 合肥 (status=current, time=2023-11-14T23:13:20Z). entities: user 合肥 我以 以前 前住 住在 在合\n- 同事 residence = 青岛 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-6",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "南宁"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 大连 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 大连 事住 住在 在大. evidence: 同事住在大连",
+        "user residence = 福州 (status=current, time=2023-11-14T23:13:20Z). entities: user 福州 我以 以前 前住 住在 在福. evidence: 我以前住在福州",
+        "Active profile:\n- user residence = 福州 (status=current, time=2023-11-14T23:13:20Z). entities: user 福州 我以 以前 前住 住在 在福\n- 同事 residence = 大连 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-6",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "福州"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 福州 (status=current, time=2023-11-14T23:13:20Z). entities: user 福州 我以 以前 前住 住在 在福. evidence: 我以前住在福州",
+        "[2023-11-14T23:13:20Z] user: 我以前住在福州。",
+        "Active profile:\n- user residence = 福州 (status=current, time=2023-11-14T23:13:20Z). entities: user 福州 我以 以前 前住 住在 在福\n- 同事 residence = 大连 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-7",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "海口"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 沈阳 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 沈阳 事住 住在 在沈. evidence: 同事住在沈阳",
+        "user residence = 厦门 (status=current, time=2023-11-14T23:13:20Z). entities: user 厦门 我以 以前 前住 住在 在厦. evidence: 我以前住在厦门",
+        "Active profile:\n- user residence = 厦门 (status=current, time=2023-11-14T23:13:20Z). entities: user 厦门 我以 以前 前住 住在 在厦\n- 同事 residence = 沈阳 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-7",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "厦门"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 厦门 (status=current, time=2023-11-14T23:13:20Z). entities: user 厦门 我以 以前 前住 住在 在厦. evidence: 我以前住在厦门",
+        "[2023-11-14T23:13:20Z] user: 我以前住在厦门。",
+        "Active profile:\n- user residence = 厦门 (status=current, time=2023-11-14T23:13:20Z). entities: user 厦门 我以 以前 前住 住在 在厦\n- 同事 residence = 沈阳 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-8",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "成都"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 长春 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 长春 事住 住在 在长. evidence: 同事住在长春",
+        "user residence = 青岛 (status=current, time=2023-11-14T23:13:20Z). entities: user 青岛 我以 以前 前住 住在 在青. evidence: 我以前住在青岛",
+        "Active profile:\n- user residence = 青岛 (status=current, time=2023-11-14T23:13:20Z). entities: user 青岛 我以 以前 前住 住在 在青\n- 同事 residence = 长春 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-8",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "青岛"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 青岛 (status=current, time=2023-11-14T23:13:20Z). entities: user 青岛 我以 以前 前住 住在 在青. evidence: 我以前住在青岛",
+        "[2023-11-14T23:13:20Z] user: 我以前住在青岛。",
+        "Active profile:\n- user residence = 青岛 (status=current, time=2023-11-14T23:13:20Z). entities: user 青岛 我以 以前 前住 住在 在青\n- 同事 residence = 长春 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-9",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "重庆"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 哈尔滨 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 哈尔 尔滨 事住 住在 在哈. evidence: 同事住在哈尔滨",
+        "user residence = 大连 (status=current, time=2023-11-14T23:13:20Z). entities: user 大连 我以 以前 前住 住在 在大. evidence: 我以前住在大连",
+        "Active profile:\n- user residence = 大连 (status=current, time=2023-11-14T23:13:20Z). entities: user 大连 我以 以前 前住 住在 在大\n- 同事 residence = 哈尔滨 (status=current, time=2"
+      ]
+    },
+    {
+      "user": "move-qu-9",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "大连"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 大连 (status=current, time=2023-11-14T23:13:20Z). entities: user 大连 我以 以前 前住 住在 在大. evidence: 我以前住在大连",
+        "[2023-11-14T23:13:20Z] user: 我以前住在大连。",
+        "Active profile:\n- user residence = 大连 (status=current, time=2023-11-14T23:13:20Z). entities: user 大连 我以 以前 前住 住在 在大\n- 同事 residence = 哈尔滨 (status=current, time=2"
+      ]
+    },
+    {
+      "user": "move-qu-10",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "昆明"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 济南 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 济南 事住 住在 在济. evidence: 同事住在济南",
+        "user residence = 沈阳 (status=current, time=2023-11-14T23:13:20Z). entities: user 沈阳 我以 以前 前住 住在 在沈. evidence: 我以前住在沈阳",
+        "Active profile:\n- user residence = 沈阳 (status=current, time=2023-11-14T23:13:20Z). entities: user 沈阳 我以 以前 前住 住在 在沈\n- 同事 residence = 济南 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-10",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "沈阳"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 沈阳 (status=current, time=2023-11-14T23:13:20Z). entities: user 沈阳 我以 以前 前住 住在 在沈. evidence: 我以前住在沈阳",
+        "[2023-11-14T23:13:20Z] user: 我以前住在沈阳。",
+        "Active profile:\n- user residence = 沈阳 (status=current, time=2023-11-14T23:13:20Z). entities: user 沈阳 我以 以前 前住 住在 在沈\n- 同事 residence = 济南 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-11",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "贵阳"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 郑州 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 郑州 事住 住在 在郑. evidence: 同事住在郑州",
+        "user residence = 长春 (status=current, time=2023-11-14T23:13:20Z). entities: user 长春 我以 以前 前住 住在 在长. evidence: 我以前住在长春",
+        "Active profile:\n- user residence = 长春 (status=current, time=2023-11-14T23:13:20Z). entities: user 长春 我以 以前 前住 住在 在长\n- 同事 residence = 郑州 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-11",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "长春"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 长春 (status=current, time=2023-11-14T23:13:20Z). entities: user 长春 我以 以前 前住 住在 在长. evidence: 我以前住在长春",
+        "[2023-11-14T23:13:20Z] user: 我以前住在长春。",
+        "Active profile:\n- user residence = 长春 (status=current, time=2023-11-14T23:13:20Z). entities: user 长春 我以 以前 前住 住在 在长\n- 同事 residence = 郑州 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-12",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "拉萨"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 武汉 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 武汉 事住 住在 在武. evidence: 同事住在武汉",
+        "user residence = 哈尔滨 (status=current, time=2023-11-14T23:13:20Z). entities: user 哈尔 尔滨 我以 以前 前住 住在 在哈. evidence: 我以前住在哈尔滨",
+        "Active profile:\n- user residence = 哈尔滨 (status=current, time=2023-11-14T23:13:20Z). entities: user 哈尔 尔滨 我以 以前 前住 住在 在哈\n- 同事 residence = 武汉 (status=current, tim"
+      ]
+    },
+    {
+      "user": "move-qu-12",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "哈尔滨"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 哈尔滨 (status=current, time=2023-11-14T23:13:20Z). entities: user 哈尔 尔滨 我以 以前 前住 住在 在哈. evidence: 我以前住在哈尔滨",
+        "[2023-11-14T23:13:20Z] user: 我以前住在哈尔滨。",
+        "Active profile:\n- user residence = 哈尔滨 (status=current, time=2023-11-14T23:13:20Z). entities: user 哈尔 尔滨 我以 以前 前住 住在 在哈\n- 同事 residence = 武汉 (status=current, tim"
+      ]
+    },
+    {
+      "user": "move-qu-13",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "西安"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 长沙 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 长沙 事住 住在 在长. evidence: 同事住在长沙",
+        "user residence = 济南 (status=current, time=2023-11-14T23:13:20Z). entities: user 济南 我以 以前 前住 住在 在济. evidence: 我以前住在济南",
+        "Active profile:\n- user residence = 济南 (status=current, time=2023-11-14T23:13:20Z). entities: user 济南 我以 以前 前住 住在 在济\n- 同事 residence = 长沙 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-13",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "济南"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 济南 (status=current, time=2023-11-14T23:13:20Z). entities: user 济南 我以 以前 前住 住在 在济. evidence: 我以前住在济南",
+        "[2023-11-14T23:13:20Z] user: 我以前住在济南。",
+        "Active profile:\n- user residence = 济南 (status=current, time=2023-11-14T23:13:20Z). entities: user 济南 我以 以前 前住 住在 在济\n- 同事 residence = 长沙 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-14",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "兰州"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 南昌 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 南昌 事住 住在 在南. evidence: 同事住在南昌",
+        "user residence = 郑州 (status=current, time=2023-11-14T23:13:20Z). entities: user 郑州 我以 以前 前住 住在 在郑. evidence: 我以前住在郑州",
+        "Active profile:\n- user residence = 郑州 (status=current, time=2023-11-14T23:13:20Z). entities: user 郑州 我以 以前 前住 住在 在郑\n- 同事 residence = 南昌 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-14",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "郑州"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 郑州 (status=current, time=2023-11-14T23:13:20Z). entities: user 郑州 我以 以前 前住 住在 在郑. evidence: 我以前住在郑州",
+        "[2023-11-14T23:13:20Z] user: 我以前住在郑州。",
+        "Active profile:\n- user residence = 郑州 (status=current, time=2023-11-14T23:13:20Z). entities: user 郑州 我以 以前 前住 住在 在郑\n- 同事 residence = 南昌 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-15",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "银川"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 广州 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 广州 事住 住在 在广. evidence: 同事住在广州",
+        "user residence = 武汉 (status=current, time=2023-11-14T23:13:20Z). entities: user 武汉 我以 以前 前住 住在 在武. evidence: 我以前住在武汉",
+        "Active profile:\n- user residence = 武汉 (status=current, time=2023-11-14T23:13:20Z). entities: user 武汉 我以 以前 前住 住在 在武\n- 同事 residence = 广州 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-15",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "武汉"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 武汉 (status=current, time=2023-11-14T23:13:20Z). entities: user 武汉 我以 以前 前住 住在 在武. evidence: 我以前住在武汉",
+        "[2023-11-14T23:13:20Z] user: 我以前住在武汉。",
+        "Active profile:\n- user residence = 武汉 (status=current, time=2023-11-14T23:13:20Z). entities: user 武汉 我以 以前 前住 住在 在武\n- 同事 residence = 广州 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-16",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "西宁"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 深圳 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 深圳 事住 住在 在深. evidence: 同事住在深圳",
+        "user residence = 长沙 (status=current, time=2023-11-14T23:13:20Z). entities: user 长沙 我以 以前 前住 住在 在长. evidence: 我以前住在长沙",
+        "Active profile:\n- user residence = 长沙 (status=current, time=2023-11-14T23:13:20Z). entities: user 长沙 我以 以前 前住 住在 在长\n- 同事 residence = 深圳 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-16",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "长沙"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 长沙 (status=current, time=2023-11-14T23:13:20Z). entities: user 长沙 我以 以前 前住 住在 在长. evidence: 我以前住在长沙",
+        "[2023-11-14T23:13:20Z] user: 我以前住在长沙。",
+        "Active profile:\n- user residence = 长沙 (status=current, time=2023-11-14T23:13:20Z). entities: user 长沙 我以 以前 前住 住在 在长\n- 同事 residence = 深圳 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-17",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "乌鲁木齐"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 珠海 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 珠海 事住 住在 在珠. evidence: 同事住在珠海",
+        "user residence = 南昌 (status=current, time=2023-11-14T23:13:20Z). entities: user 南昌 我以 以前 前住 住在 在南. evidence: 我以前住在南昌",
+        "Active profile:\n- user residence = 南昌 (status=current, time=2023-11-14T23:13:20Z). entities: user 南昌 我以 以前 前住 住在 在南\n- 同事 residence = 珠海 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-17",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "南昌"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 南昌 (status=current, time=2023-11-14T23:13:20Z). entities: user 南昌 我以 以前 前住 住在 在南. evidence: 我以前住在南昌",
+        "[2023-11-14T23:13:20Z] user: 我以前住在南昌。",
+        "Active profile:\n- user residence = 南昌 (status=current, time=2023-11-14T23:13:20Z). entities: user 南昌 我以 以前 前住 住在 在南\n- 同事 residence = 珠海 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-18",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "太原"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 佛山 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 佛山 事住 住在 在佛. evidence: 同事住在佛山",
+        "user residence = 广州 (status=current, time=2023-11-14T23:13:20Z). entities: user 广州 我以 以前 前住 住在 在广. evidence: 我以前住在广州",
+        "Active profile:\n- user residence = 广州 (status=current, time=2023-11-14T23:13:20Z). entities: user 广州 我以 以前 前住 住在 在广\n- 同事 residence = 佛山 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-18",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "广州"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 广州 (status=current, time=2023-11-14T23:13:20Z). entities: user 广州 我以 以前 前住 住在 在广. evidence: 我以前住在广州",
+        "[2023-11-14T23:13:20Z] user: 我以前住在广州。",
+        "Active profile:\n- user residence = 广州 (status=current, time=2023-11-14T23:13:20Z). entities: user 广州 我以 以前 前住 住在 在广\n- 同事 residence = 佛山 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-19",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "石家庄"
+      ],
+      "rank": 2,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.5,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 东莞 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 东莞 事住 住在 在东. evidence: 同事住在东莞",
+        "[2023-11-15T00:13:20Z] user: 后来我搬去了石家庄。",
+        "user residence = 深圳 (status=current, time=2023-11-14T23:13:20Z). entities: user 深圳 我以 以前 前住 住在 在深. evidence: 我以前住在深圳"
+      ]
+    },
+    {
+      "user": "move-qu-19",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "深圳"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 深圳 (status=current, time=2023-11-14T23:13:20Z). entities: user 深圳 我以 以前 前住 住在 在深. evidence: 我以前住在深圳",
+        "[2023-11-14T23:13:20Z] user: 我以前住在深圳。",
+        "Active profile:\n- user residence = 深圳 (status=current, time=2023-11-14T23:13:20Z). entities: user 深圳 我以 以前 前住 住在 在深\n- 同事 residence = 东莞 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-20",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "呼和浩特"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 南宁 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 南宁 事住 住在 在南. evidence: 同事住在南宁",
+        "user residence = 珠海 (status=current, time=2023-11-14T23:13:20Z). entities: user 珠海 我以 以前 前住 住在 在珠. evidence: 我以前住在珠海",
+        "Active profile:\n- user residence = 珠海 (status=current, time=2023-11-14T23:13:20Z). entities: user 珠海 我以 以前 前住 住在 在珠\n- 同事 residence = 南宁 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-20",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "珠海"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 珠海 (status=current, time=2023-11-14T23:13:20Z). entities: user 珠海 我以 以前 前住 住在 在珠. evidence: 我以前住在珠海",
+        "[2023-11-14T23:13:20Z] user: 我以前住在珠海。",
+        "Active profile:\n- user residence = 珠海 (status=current, time=2023-11-14T23:13:20Z). entities: user 珠海 我以 以前 前住 住在 在珠\n- 同事 residence = 南宁 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-21",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "天津"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 海口 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 海口 事住 住在 在海. evidence: 同事住在海口",
+        "user residence = 佛山 (status=current, time=2023-11-14T23:13:20Z). entities: user 佛山 我以 以前 前住 住在 在佛. evidence: 我以前住在佛山",
+        "Active profile:\n- user residence = 佛山 (status=current, time=2023-11-14T23:13:20Z). entities: user 佛山 我以 以前 前住 住在 在佛\n- 同事 residence = 海口 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-21",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "佛山"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 佛山 (status=current, time=2023-11-14T23:13:20Z). entities: user 佛山 我以 以前 前住 住在 在佛. evidence: 我以前住在佛山",
+        "[2023-11-14T23:13:20Z] user: 我以前住在佛山。",
+        "Active profile:\n- user residence = 佛山 (status=current, time=2023-11-14T23:13:20Z). entities: user 佛山 我以 以前 前住 住在 在佛\n- 同事 residence = 海口 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-22",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "上海"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 成都 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 成都 事住 住在 在成. evidence: 同事住在成都",
+        "user residence = 东莞 (status=current, time=2023-11-14T23:13:20Z). entities: user 东莞 我以 以前 前住 住在 在东. evidence: 我以前住在东莞",
+        "Active profile:\n- user residence = 东莞 (status=current, time=2023-11-14T23:13:20Z). entities: user 东莞 我以 以前 前住 住在 在东\n- 同事 residence = 成都 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-22",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "东莞"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 东莞 (status=current, time=2023-11-14T23:13:20Z). entities: user 东莞 我以 以前 前住 住在 在东. evidence: 我以前住在东莞",
+        "[2023-11-14T23:13:20Z] user: 我以前住在东莞。",
+        "Active profile:\n- user residence = 东莞 (status=current, time=2023-11-14T23:13:20Z). entities: user 东莞 我以 以前 前住 住在 在东\n- 同事 residence = 成都 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-23",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "南京"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 重庆 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 重庆 事住 住在 在重. evidence: 同事住在重庆",
+        "user residence = 南宁 (status=current, time=2023-11-14T23:13:20Z). entities: user 南宁 我以 以前 前住 住在 在南. evidence: 我以前住在南宁",
+        "Active profile:\n- user residence = 南宁 (status=current, time=2023-11-14T23:13:20Z). entities: user 南宁 我以 以前 前住 住在 在南\n- 同事 residence = 重庆 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-23",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "南宁"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 南宁 (status=current, time=2023-11-14T23:13:20Z). entities: user 南宁 我以 以前 前住 住在 在南. evidence: 我以前住在南宁",
+        "[2023-11-14T23:13:20Z] user: 我以前住在南宁。",
+        "Active profile:\n- user residence = 南宁 (status=current, time=2023-11-14T23:13:20Z). entities: user 南宁 我以 以前 前住 住在 在南\n- 同事 residence = 重庆 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-24",
+      "category": "move-qu-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "杭州"
+      ],
+      "rank": 6,
+      "recall_at_5": 0.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 0.1667,
+      "status_ok": false,
+      "top": [
+        "同事 residence = 昆明 (status=current, time=2023-11-15T01:13:20Z). entities: 同事 昆明 事住 住在 在昆. evidence: 同事住在昆明",
+        "user residence = 海口 (status=current, time=2023-11-14T23:13:20Z). entities: user 海口 我以 以前 前住 住在 在海. evidence: 我以前住在海口",
+        "Active profile:\n- user residence = 海口 (status=current, time=2023-11-14T23:13:20Z). entities: user 海口 我以 以前 前住 住在 在海\n- 同事 residence = 昆明 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "move-qu-24",
+      "category": "move-qu-history",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "海口"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user residence = 海口 (status=current, time=2023-11-14T23:13:20Z). entities: user 海口 我以 以前 前住 住在 在海. evidence: 我以前住在海口",
+        "[2023-11-14T23:13:20Z] user: 我以前住在海口。",
+        "Active profile:\n- user residence = 海口 (status=current, time=2023-11-14T23:13:20Z). entities: user 海口 我以 以前 前住 住在 在海\n- 同事 residence = 昆明 (status=current, time=20"
+      ]
+    },
+    {
+      "user": "rename-0",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名0"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名0。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名0。"
+      ]
+    },
+    {
+      "user": "rename-0",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名0"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名0。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名0。"
+      ]
+    },
+    {
+      "user": "rename-1",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名1"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名1。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名1。"
+      ]
+    },
+    {
+      "user": "rename-1",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名1"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名1。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名1。"
+      ]
+    },
+    {
+      "user": "rename-2",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名2"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名2。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名2。"
+      ]
+    },
+    {
+      "user": "rename-2",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名2"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名2。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名2。"
+      ]
+    },
+    {
+      "user": "rename-3",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名3"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名3。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名3。"
+      ]
+    },
+    {
+      "user": "rename-3",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名3"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名3。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名3。"
+      ]
+    },
+    {
+      "user": "rename-4",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名4"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名4。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名4。"
+      ]
+    },
+    {
+      "user": "rename-4",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名4"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名4。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名4。"
+      ]
+    },
+    {
+      "user": "rename-5",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名5"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名5。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名5。"
+      ]
+    },
+    {
+      "user": "rename-5",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名5"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名5。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名5。"
+      ]
+    },
+    {
+      "user": "rename-6",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名6"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名6。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名6。"
+      ]
+    },
+    {
+      "user": "rename-6",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名6"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名6。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名6。"
+      ]
+    },
+    {
+      "user": "rename-7",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名7"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名7。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名7。"
+      ]
+    },
+    {
+      "user": "rename-7",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名7"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名7。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名7。"
+      ]
+    },
+    {
+      "user": "rename-8",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名8"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名8。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名8。"
+      ]
+    },
+    {
+      "user": "rename-8",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名8"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名8。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名8。"
+      ]
+    },
+    {
+      "user": "rename-9",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名9"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名9。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名9。"
+      ]
+    },
+    {
+      "user": "rename-9",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名9"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名9。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名9。"
+      ]
+    },
+    {
+      "user": "rename-10",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名10"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名10。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名10。"
+      ]
+    },
+    {
+      "user": "rename-10",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名10"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名10。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名10。"
+      ]
+    },
+    {
+      "user": "rename-11",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名11"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名11。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名11。"
+      ]
+    },
+    {
+      "user": "rename-11",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名11"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名11。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名11。"
+      ]
+    },
+    {
+      "user": "rename-12",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名12"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名12。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名12。"
+      ]
+    },
+    {
+      "user": "rename-12",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名12"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名12。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名12。"
+      ]
+    },
+    {
+      "user": "rename-13",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名13"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名13。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名13。"
+      ]
+    },
+    {
+      "user": "rename-13",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名13"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名13。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名13。"
+      ]
+    },
+    {
+      "user": "rename-14",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名14"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名14。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名14。"
+      ]
+    },
+    {
+      "user": "rename-14",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名14"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名14。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名14。"
+      ]
+    },
+    {
+      "user": "rename-15",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名15"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名15。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名15。"
+      ]
+    },
+    {
+      "user": "rename-15",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名15"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名15。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名15。"
+      ]
+    },
+    {
+      "user": "rename-16",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名16"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名16。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名16。"
+      ]
+    },
+    {
+      "user": "rename-16",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名16"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名16。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名16。"
+      ]
+    },
+    {
+      "user": "rename-17",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名17"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名17。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名17。"
+      ]
+    },
+    {
+      "user": "rename-17",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名17"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名17。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名17。"
+      ]
+    },
+    {
+      "user": "rename-18",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名18"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名18。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名18。"
+      ]
+    },
+    {
+      "user": "rename-18",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名18"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名18。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名18。"
+      ]
+    },
+    {
+      "user": "rename-19",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名19"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名19。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名19。"
+      ]
+    },
+    {
+      "user": "rename-19",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名19"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名19。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名19。"
+      ]
+    },
+    {
+      "user": "rename-20",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名20"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名20。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名20。"
+      ]
+    },
+    {
+      "user": "rename-20",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名20"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名20。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名20。"
+      ]
+    },
+    {
+      "user": "rename-21",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名21"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名21。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名21。"
+      ]
+    },
+    {
+      "user": "rename-21",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名21"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名21。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名21。"
+      ]
+    },
+    {
+      "user": "rename-22",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名22"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名22。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名22。"
+      ]
+    },
+    {
+      "user": "rename-22",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名22"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名22。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名22。"
+      ]
+    },
+    {
+      "user": "rename-23",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名23"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名23。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名23。"
+      ]
+    },
+    {
+      "user": "rename-23",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名23"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名23。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名23。"
+      ]
+    },
+    {
+      "user": "rename-24",
+      "category": "rename-current",
+      "query": "我现在叫什么？",
+      "golds": [
+        "新名24"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T00:13:20Z] user: 我改名为新名24。",
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名24。"
+      ]
+    },
+    {
+      "user": "rename-24",
+      "category": "rename-history",
+      "query": "我以前叫什么？",
+      "golds": [
+        "旧名24"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: 我以前的名字是旧名24。",
+        "[2023-11-15T00:13:20Z] user: 我改名为新名24。"
+      ]
+    },
+    {
+      "user": "en-job-0",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "律师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 律师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 律师 now work as. evidence: I work as a 律师 now",
+        "Active profile:\n- user occupation = a 律师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 律师 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 律师 now."
+      ]
+    },
+    {
+      "user": "en-job-0",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "教师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 教师.",
+        "Active profile:\n- user occupation = a 律师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 律师 now work as",
+        "user occupation = a 律师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 律师 now work as. evidence: I work as a 律师 now"
+      ]
+    },
+    {
+      "user": "en-job-1",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "厨师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 厨师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 厨师 now work as. evidence: I work as a 厨师 now",
+        "Active profile:\n- user occupation = a 厨师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 厨师 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 厨师 now."
+      ]
+    },
+    {
+      "user": "en-job-1",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "医生"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 医生.",
+        "Active profile:\n- user occupation = a 厨师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 厨师 now work as",
+        "user occupation = a 厨师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 厨师 now work as. evidence: I work as a 厨师 now"
+      ]
+    },
+    {
+      "user": "en-job-2",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "司机"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 司机 now (status=current, time=2023-11-15T00:13:20Z). entities: user 司机 now work as. evidence: I work as a 司机 now",
+        "Active profile:\n- user occupation = a 司机 now (status=current, time=2023-11-15T00:13:20Z). entities: user 司机 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 司机 now."
+      ]
+    },
+    {
+      "user": "en-job-2",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "会计"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 会计.",
+        "Active profile:\n- user occupation = a 司机 now (status=current, time=2023-11-15T00:13:20Z). entities: user 司机 now work as",
+        "user occupation = a 司机 now (status=current, time=2023-11-15T00:13:20Z). entities: user 司机 now work as. evidence: I work as a 司机 now"
+      ]
+    },
+    {
+      "user": "en-job-3",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "护士"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 护士 now (status=current, time=2023-11-15T00:13:20Z). entities: user 护士 now work as. evidence: I work as a 护士 now",
+        "Active profile:\n- user occupation = a 护士 now (status=current, time=2023-11-15T00:13:20Z). entities: user 护士 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 护士 now."
+      ]
+    },
+    {
+      "user": "en-job-3",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "编辑"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 编辑.",
+        "Active profile:\n- user occupation = a 护士 now (status=current, time=2023-11-15T00:13:20Z). entities: user 护士 now work as",
+        "user occupation = a 护士 now (status=current, time=2023-11-15T00:13:20Z). entities: user 护士 now work as. evidence: I work as a 护士 now"
+      ]
+    },
+    {
+      "user": "en-job-4",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "设计师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 设计师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 设计 计师 now work as. evidence: I work as a 设计师 now",
+        "Active profile:\n- user occupation = a 设计师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 设计 计师 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 设计师 now."
+      ]
+    },
+    {
+      "user": "en-job-4",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "律师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 律师.",
+        "Active profile:\n- user occupation = a 设计师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 设计 计师 now work as",
+        "user occupation = a 设计师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 设计 计师 now work as. evidence: I work as a 设计师 now"
+      ]
+    },
+    {
+      "user": "en-job-5",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "程序员"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 程序员 now (status=current, time=2023-11-15T00:13:20Z). entities: user 程序 序员 now work as. evidence: I work as a 程序员 now",
+        "Active profile:\n- user occupation = a 程序员 now (status=current, time=2023-11-15T00:13:20Z). entities: user 程序 序员 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 程序员 now."
+      ]
+    },
+    {
+      "user": "en-job-5",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "厨师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 厨师.",
+        "Active profile:\n- user occupation = a 程序员 now (status=current, time=2023-11-15T00:13:20Z). entities: user 程序 序员 now work as",
+        "user occupation = a 程序员 now (status=current, time=2023-11-15T00:13:20Z). entities: user 程序 序员 now work as. evidence: I work as a 程序员 now"
+      ]
+    },
+    {
+      "user": "en-job-6",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "教师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 教师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 教师 now work as. evidence: I work as a 教师 now",
+        "Active profile:\n- user occupation = a 教师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 教师 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 教师 now."
+      ]
+    },
+    {
+      "user": "en-job-6",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "司机"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 司机.",
+        "Active profile:\n- user occupation = a 教师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 教师 now work as",
+        "user occupation = a 教师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 教师 now work as. evidence: I work as a 教师 now"
+      ]
+    },
+    {
+      "user": "en-job-7",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "医生"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 医生 now (status=current, time=2023-11-15T00:13:20Z). entities: user 医生 now work as. evidence: I work as a 医生 now",
+        "Active profile:\n- user occupation = a 医生 now (status=current, time=2023-11-15T00:13:20Z). entities: user 医生 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 医生 now."
+      ]
+    },
+    {
+      "user": "en-job-7",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "护士"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 护士.",
+        "Active profile:\n- user occupation = a 医生 now (status=current, time=2023-11-15T00:13:20Z). entities: user 医生 now work as",
+        "user occupation = a 医生 now (status=current, time=2023-11-15T00:13:20Z). entities: user 医生 now work as. evidence: I work as a 医生 now"
+      ]
+    },
+    {
+      "user": "en-job-8",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "会计"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 会计 now (status=current, time=2023-11-15T00:13:20Z). entities: user 会计 now work as. evidence: I work as a 会计 now",
+        "Active profile:\n- user occupation = a 会计 now (status=current, time=2023-11-15T00:13:20Z). entities: user 会计 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 会计 now."
+      ]
+    },
+    {
+      "user": "en-job-8",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "设计师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 设计师.",
+        "Active profile:\n- user occupation = a 会计 now (status=current, time=2023-11-15T00:13:20Z). entities: user 会计 now work as",
+        "user occupation = a 会计 now (status=current, time=2023-11-15T00:13:20Z). entities: user 会计 now work as. evidence: I work as a 会计 now"
+      ]
+    },
+    {
+      "user": "en-job-9",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "编辑"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 编辑 now (status=current, time=2023-11-15T00:13:20Z). entities: user 编辑 now work as. evidence: I work as a 编辑 now",
+        "Active profile:\n- user occupation = a 编辑 now (status=current, time=2023-11-15T00:13:20Z). entities: user 编辑 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 编辑 now."
+      ]
+    },
+    {
+      "user": "en-job-9",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "程序员"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 程序员.",
+        "Active profile:\n- user occupation = a 编辑 now (status=current, time=2023-11-15T00:13:20Z). entities: user 编辑 now work as",
+        "user occupation = a 编辑 now (status=current, time=2023-11-15T00:13:20Z). entities: user 编辑 now work as. evidence: I work as a 编辑 now"
+      ]
+    },
+    {
+      "user": "en-job-10",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "律师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 律师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 律师 now work as. evidence: I work as a 律师 now",
+        "Active profile:\n- user occupation = a 律师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 律师 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 律师 now."
+      ]
+    },
+    {
+      "user": "en-job-10",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "教师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 教师.",
+        "Active profile:\n- user occupation = a 律师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 律师 now work as",
+        "user occupation = a 律师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 律师 now work as. evidence: I work as a 律师 now"
+      ]
+    },
+    {
+      "user": "en-job-11",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "厨师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 厨师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 厨师 now work as. evidence: I work as a 厨师 now",
+        "Active profile:\n- user occupation = a 厨师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 厨师 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 厨师 now."
+      ]
+    },
+    {
+      "user": "en-job-11",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "医生"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 医生.",
+        "Active profile:\n- user occupation = a 厨师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 厨师 now work as",
+        "user occupation = a 厨师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 厨师 now work as. evidence: I work as a 厨师 now"
+      ]
+    },
+    {
+      "user": "en-job-12",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "司机"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 司机 now (status=current, time=2023-11-15T00:13:20Z). entities: user 司机 now work as. evidence: I work as a 司机 now",
+        "Active profile:\n- user occupation = a 司机 now (status=current, time=2023-11-15T00:13:20Z). entities: user 司机 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 司机 now."
+      ]
+    },
+    {
+      "user": "en-job-12",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "会计"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 会计.",
+        "Active profile:\n- user occupation = a 司机 now (status=current, time=2023-11-15T00:13:20Z). entities: user 司机 now work as",
+        "user occupation = a 司机 now (status=current, time=2023-11-15T00:13:20Z). entities: user 司机 now work as. evidence: I work as a 司机 now"
+      ]
+    },
+    {
+      "user": "en-job-13",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "护士"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 护士 now (status=current, time=2023-11-15T00:13:20Z). entities: user 护士 now work as. evidence: I work as a 护士 now",
+        "Active profile:\n- user occupation = a 护士 now (status=current, time=2023-11-15T00:13:20Z). entities: user 护士 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 护士 now."
+      ]
+    },
+    {
+      "user": "en-job-13",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "编辑"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 编辑.",
+        "Active profile:\n- user occupation = a 护士 now (status=current, time=2023-11-15T00:13:20Z). entities: user 护士 now work as",
+        "user occupation = a 护士 now (status=current, time=2023-11-15T00:13:20Z). entities: user 护士 now work as. evidence: I work as a 护士 now"
+      ]
+    },
+    {
+      "user": "en-job-14",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "设计师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 设计师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 设计 计师 now work as. evidence: I work as a 设计师 now",
+        "Active profile:\n- user occupation = a 设计师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 设计 计师 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 设计师 now."
+      ]
+    },
+    {
+      "user": "en-job-14",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "律师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 律师.",
+        "Active profile:\n- user occupation = a 设计师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 设计 计师 now work as",
+        "user occupation = a 设计师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 设计 计师 now work as. evidence: I work as a 设计师 now"
+      ]
+    },
+    {
+      "user": "en-job-15",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "程序员"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 程序员 now (status=current, time=2023-11-15T00:13:20Z). entities: user 程序 序员 now work as. evidence: I work as a 程序员 now",
+        "Active profile:\n- user occupation = a 程序员 now (status=current, time=2023-11-15T00:13:20Z). entities: user 程序 序员 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 程序员 now."
+      ]
+    },
+    {
+      "user": "en-job-15",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "厨师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 厨师.",
+        "Active profile:\n- user occupation = a 程序员 now (status=current, time=2023-11-15T00:13:20Z). entities: user 程序 序员 now work as",
+        "user occupation = a 程序员 now (status=current, time=2023-11-15T00:13:20Z). entities: user 程序 序员 now work as. evidence: I work as a 程序员 now"
+      ]
+    },
+    {
+      "user": "en-job-16",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "教师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 教师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 教师 now work as. evidence: I work as a 教师 now",
+        "Active profile:\n- user occupation = a 教师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 教师 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 教师 now."
+      ]
+    },
+    {
+      "user": "en-job-16",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "司机"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 司机.",
+        "Active profile:\n- user occupation = a 教师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 教师 now work as",
+        "user occupation = a 教师 now (status=current, time=2023-11-15T00:13:20Z). entities: user 教师 now work as. evidence: I work as a 教师 now"
+      ]
+    },
+    {
+      "user": "en-job-17",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "医生"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 医生 now (status=current, time=2023-11-15T00:13:20Z). entities: user 医生 now work as. evidence: I work as a 医生 now",
+        "Active profile:\n- user occupation = a 医生 now (status=current, time=2023-11-15T00:13:20Z). entities: user 医生 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 医生 now."
+      ]
+    },
+    {
+      "user": "en-job-17",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "护士"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 护士.",
+        "Active profile:\n- user occupation = a 医生 now (status=current, time=2023-11-15T00:13:20Z). entities: user 医生 now work as",
+        "user occupation = a 医生 now (status=current, time=2023-11-15T00:13:20Z). entities: user 医生 now work as. evidence: I work as a 医生 now"
+      ]
+    },
+    {
+      "user": "en-job-18",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "会计"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 会计 now (status=current, time=2023-11-15T00:13:20Z). entities: user 会计 now work as. evidence: I work as a 会计 now",
+        "Active profile:\n- user occupation = a 会计 now (status=current, time=2023-11-15T00:13:20Z). entities: user 会计 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 会计 now."
+      ]
+    },
+    {
+      "user": "en-job-18",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "设计师"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 设计师.",
+        "Active profile:\n- user occupation = a 会计 now (status=current, time=2023-11-15T00:13:20Z). entities: user 会计 now work as",
+        "user occupation = a 会计 now (status=current, time=2023-11-15T00:13:20Z). entities: user 会计 now work as. evidence: I work as a 会计 now"
+      ]
+    },
+    {
+      "user": "en-job-19",
+      "category": "en-job-current",
+      "query": "What is my job now?",
+      "golds": [
+        "编辑"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "user occupation = a 编辑 now (status=current, time=2023-11-15T00:13:20Z). entities: user 编辑 now work as. evidence: I work as a 编辑 now",
+        "Active profile:\n- user occupation = a 编辑 now (status=current, time=2023-11-15T00:13:20Z). entities: user 编辑 now work as",
+        "[2023-11-15T00:13:20Z] user: I work as a 编辑 now."
+      ]
+    },
+    {
+      "user": "en-job-19",
+      "category": "en-job-history",
+      "query": "What job did I have before?",
+      "golds": [
+        "程序员"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-14T23:13:20Z] user: I used to work as a 程序员.",
+        "Active profile:\n- user occupation = a 编辑 now (status=current, time=2023-11-15T00:13:20Z). entities: user 编辑 now work as",
+        "user occupation = a 编辑 now (status=current, time=2023-11-15T00:13:20Z). entities: user 编辑 now work as. evidence: I work as a 编辑 now"
+      ]
+    }
+  ]
+}

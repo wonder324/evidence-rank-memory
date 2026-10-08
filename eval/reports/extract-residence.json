@@ -1,0 +1,288 @@
+{
+  "label": "extract-residence",
+  "embedder": "dashscope",
+  "embedding_model": "text-embedding-v4",
+  "llm_model": "gpt-4o-mini",
+  "llm_extract_active": false,
+  "weights": {
+    "bm25": 1.15,
+    "dense": 0.45,
+    "overlap": 0.85,
+    "entity": 0.4,
+    "literal": 0.9,
+    "temporal": 0.7,
+    "kind": 0.55,
+    "hop": 0.35,
+    "option": 0.18,
+    "profile": 0.15
+  },
+  "probe_count": 14,
+  "recall_at_5": 1.0,
+  "recall_at_100": 1.0,
+  "mrr": 1.0,
+  "status_accuracy": 1.0,
+  "probes": [
+    {
+      "user": "p-zh",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "南京"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user residence = 南京 (status=current, time=2023-11-15T22:13:20Z). entities: user 南京 我以 以前 前住 住在 在杭 杭州 州现 现在 在住 在南. evidence: 我以前住在杭州，现在住在南京",
+        "[2023-11-15T22:13:20Z] user: 我以前住在杭州，现在住在南京。",
+        "Active profile:\n- user residence = 南京 (status=current, time=2023-11-15T22:13:20Z). entities: user 南京 我以 以前 前住 住在 在杭 杭州 州现 现在 在住 在南\n- user name = 周宁 (status=current, time=2023-11-16",
+        "user residence = 杭州 (status=previous, time=2023-11-15T22:13:20Z). entities: user 杭州 我以 以前 前住 住在 在杭 州现 现在 在住 在南 南京. evidence: 我以前住在杭州，现在住在南京",
+        "user name = 周宁 (status=current, time=2023-11-16T22:13:20Z). entities: user 周宁 我叫 叫周 宁我 我喜 喜欢 欢川 川菜. evidence: 我叫周宁，我喜欢川菜"
+      ]
+    },
+    {
+      "user": "p-zh",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "杭州"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user residence = 杭州 (status=previous, time=2023-11-15T22:13:20Z). entities: user 杭州 我以 以前 前住 住在 在杭 州现 现在 在住 在南 南京. evidence: 我以前住在杭州，现在住在南京",
+        "[2023-11-15T22:13:20Z] user: 我以前住在杭州，现在住在南京。",
+        "user residence = 南京 (status=current, time=2023-11-15T22:13:20Z). entities: user 南京 我以 以前 前住 住在 在杭 杭州 州现 现在 在住 在南. evidence: 我以前住在杭州，现在住在南京",
+        "Active profile:\n- user residence = 南京 (status=current, time=2023-11-15T22:13:20Z). entities: user 南京 我以 以前 前住 住在 在杭 杭州 州现 现在 在住 在南\n- user name = 周宁 (status=current, time=2023-11-16",
+        "[2023-11-16T22:13:20Z] user: 我叫周宁，我喜欢川菜。"
+      ]
+    },
+    {
+      "user": "p-zh",
+      "query": "我叫什么？",
+      "golds": [
+        "周宁"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user name = 周宁 (status=current, time=2023-11-16T22:13:20Z). entities: user 周宁 我叫 叫周 宁我 我喜 喜欢 欢川 川菜. evidence: 我叫周宁，我喜欢川菜",
+        "user preference = 川菜 (status=current, time=2023-11-16T22:13:20Z). entities: user 川菜 我叫 叫周 周宁 宁我 我喜 喜欢 欢川. evidence: 我叫周宁，我喜欢川菜",
+        "[2023-11-16T22:13:20Z] user: 我叫周宁，我喜欢川菜。",
+        "Active profile:\n- user residence = 南京 (status=current, time=2023-11-15T22:13:20Z). entities: user 南京 我以 以前 前住 住在 在杭 杭州 州现 现在 在住 在南\n- user name = 周宁 (status=current, time=2023-11-16",
+        "user residence = 南京 (status=current, time=2023-11-15T22:13:20Z). entities: user 南京 我以 以前 前住 住在 在杭 杭州 州现 现在 在住 在南. evidence: 我以前住在杭州，现在住在南京"
+      ]
+    },
+    {
+      "user": "p-split",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "深圳"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user residence = 深圳 (status=current, time=2023-11-16T22:13:20Z). entities: user 深圳 现在 在住 住在 在深. evidence: 现在住在深圳",
+        "[2023-11-16T22:13:20Z] user: 现在住在深圳。",
+        "Active profile:\n- user residence = 深圳 (status=current, time=2023-11-16T22:13:20Z). entities: user 深圳 现在 在住 住在 在深",
+        "[2023-11-15T22:13:20Z] user: 我以前住在上海。",
+        "user residence = 上海 (status=previous, time=2023-11-15T22:13:20Z). entities: user 上海 我以 以前 前住 住在 在上. evidence: 我以前住在上海"
+      ]
+    },
+    {
+      "user": "p-split",
+      "query": "我以前住在哪里？",
+      "golds": [
+        "上海"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user residence = 上海 (status=previous, time=2023-11-15T22:13:20Z). entities: user 上海 我以 以前 前住 住在 在上. evidence: 我以前住在上海",
+        "[2023-11-15T22:13:20Z] user: 我以前住在上海。",
+        "[2023-11-16T22:13:20Z] user: 现在住在深圳。",
+        "user residence = 深圳 (status=current, time=2023-11-16T22:13:20Z). entities: user 深圳 现在 在住 住在 在深. evidence: 现在住在深圳",
+        "Active profile:\n- user residence = 深圳 (status=current, time=2023-11-16T22:13:20Z). entities: user 深圳 现在 在住 住在 在深"
+      ]
+    },
+    {
+      "user": "p-en",
+      "query": "Which city is home now?",
+      "golds": [
+        "Boston"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user residence = Boston (status=current, time=2023-11-15T22:13:20Z). entities: user boston used to live in new york but now. evidence: I used to live in New York but now I live in ",
+        "Active profile:\n- user residence = Boston (status=current, time=2023-11-15T22:13:20Z). entities: user boston used to live in new york but now\n- user preference = drink: tea (status",
+        "[2023-11-15T22:13:20Z] user: I used to live in New York but now I live in Boston.",
+        "user residence = New York (status=previous, time=2023-11-15T22:13:20Z). entities: user new york used to live in but now boston. evidence: I used to live in New York but now I live ",
+        "user preference = drink: tea (status=current, time=2023-11-16T22:13:20Z). entities: user drink tea my favorite is. evidence: My favorite drink is tea"
+      ]
+    },
+    {
+      "user": "p-en",
+      "query": "Where did I live before?",
+      "golds": [
+        "New York"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user residence = New York (status=previous, time=2023-11-15T22:13:20Z). entities: user new york used to live in but now boston. evidence: I used to live in New York but now I live ",
+        "[2023-11-15T22:13:20Z] user: I used to live in New York but now I live in Boston.",
+        "user residence = Boston (status=current, time=2023-11-15T22:13:20Z). entities: user boston used to live in new york but now. evidence: I used to live in New York but now I live in ",
+        "Active profile:\n- user residence = Boston (status=current, time=2023-11-15T22:13:20Z). entities: user boston used to live in new york but now\n- user preference = drink: tea (status",
+        "[2023-11-16T22:13:20Z] user: My favorite drink is tea."
+      ]
+    },
+    {
+      "user": "p-en",
+      "query": "What do you know about my preferences?",
+      "golds": [
+        "tea"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "Active profile:\n- user residence = Boston (status=current, time=2023-11-15T22:13:20Z). entities: user boston used to live in new york but now\n- user preference = drink: tea (status",
+        "[2023-11-16T22:13:20Z] user: My favorite drink is tea.",
+        "user preference = drink: tea (status=current, time=2023-11-16T22:13:20Z). entities: user drink tea my favorite is. evidence: My favorite drink is tea",
+        "[2023-11-15T22:13:20Z] user: I used to live in New York but now I live in Boston.",
+        "user residence = Boston (status=current, time=2023-11-15T22:13:20Z). entities: user boston used to live in new york but now. evidence: I used to live in New York but now I live in "
+      ]
+    },
+    {
+      "user": "p-hop",
+      "query": "Where does the person I met on Tuesday live?",
+      "golds": [
+        "Paris"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "Active profile:\n- user event = met Bob at Tuesday (status=current, time=2023-11-15T22:13:20Z). entities: user met bob at tuesday on\n- Bob residence = Paris (status=current, time=20",
+        "user event = met Bob at Tuesday (status=current, time=2023-11-15T22:13:20Z). entities: user met bob at tuesday on. evidence: I met Bob on Tuesday",
+        "[2023-11-15T22:13:20Z] user: I met Bob on Tuesday.",
+        "Bob residence = Paris (status=current, time=2023-11-16T22:13:20Z). entities: bob paris lives in. evidence: Bob lives in Paris",
+        "[2023-11-16T22:13:20Z] user: Bob lives in Paris."
+      ]
+    },
+    {
+      "user": "p-hop",
+      "query": "What food do I not like?",
+      "golds": [
+        "olives"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "[2023-11-17T22:13:20Z] user: I don't like olives.",
+        "user preference = olives (status=retracted, time=2023-11-17T22:13:20Z). entities: user olives don like. evidence: I don't like olives",
+        "[2023-11-16T22:13:20Z] user: Bob lives in Paris.",
+        "[2023-11-15T22:13:20Z] user: I met Bob on Tuesday.",
+        "Bob residence = Paris (status=current, time=2023-11-16T22:13:20Z). entities: bob paris lives in. evidence: Bob lives in Paris"
+      ]
+    },
+    {
+      "user": "p-distract",
+      "query": "Which city is home now?",
+      "golds": [
+        "Lisbon"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user residence = Lisbon (status=current, time=2023-11-17T22:13:20Z). entities: user lisbon now live in. evidence: I now live in Lisbon",
+        "[2023-11-17T22:13:20Z] user: I now live in Lisbon.",
+        "Active profile:\n- user residence = Lisbon (status=current, time=2023-11-17T22:13:20Z). entities: user lisbon now live in",
+        "[2023-11-16T22:13:20Z] user: The Boston conference ran late, and Boston came up again in the notes.",
+        "[2023-11-15T22:13:20Z] user: I visited Boston for a day."
+      ]
+    },
+    {
+      "user": "p-rule",
+      "query": "What constraint do I have about Friday?",
+      "golds": [
+        "Friday"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user rule = Never book a meeting on Friday (status=current, time=2023-11-15T22:13:20Z). entities: user never book meeting on friday. evidence: Never book a meeting on Friday",
+        "Active profile:\n- user event = met someone at Friday (status=current, time=2023-11-15T22:13:20Z). entities: user met someone at friday never book meeting on\n- user rule = Never boo",
+        "[2023-11-15T22:13:20Z] user: Never book a meeting on Friday.",
+        "user event = met someone at Friday (status=current, time=2023-11-15T22:13:20Z). entities: user met someone at friday never book meeting on. evidence: Never book a meeting on Friday",
+        "[2023-11-16T22:13:20Z] user: The appointment with Mina is at 15:30 on Wednesday."
+      ]
+    },
+    {
+      "user": "p-rule",
+      "query": "When is the appointment with Mina?",
+      "golds": [
+        "15:30"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user event = met Mina is at 15:30 on Wednesday (status=current, time=2023-11-16T22:13:20Z). entities: user met mina is at 15 30 on wednesday the appointment with. evidence: The app",
+        "[2023-11-16T22:13:20Z] user: The appointment with Mina is at 15:30 on Wednesday.",
+        "Active profile:\n- user event = met someone at Friday (status=current, time=2023-11-15T22:13:20Z). entities: user met someone at friday never book meeting on\n- user rule = Never boo",
+        "[2023-11-15T22:13:20Z] user: Never book a meeting on Friday.",
+        "user rule = Never book a meeting on Friday (status=current, time=2023-11-15T22:13:20Z). entities: user never book meeting on friday. evidence: Never book a meeting on Friday"
+      ]
+    },
+    {
+      "user": "p-other",
+      "query": "我现在住在哪里？",
+      "isolation_ok": true,
+      "rank": null,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": true,
+      "top": [
+        "user residence = 成都 (status=current, time=2023-11-15T22:13:20Z). entities: user 成都 我现 现在 在住 住在 在成. evidence: 我现在住在成都",
+        "Active profile:\n- user residence = 成都 (status=current, time=2023-11-15T22:13:20Z). entities: user 成都 我现 现在 在住 住在 在成",
+        "[2023-11-15T22:13:20Z] user: 我现在住在成都。"
+      ]
+    }
+  ]
+}

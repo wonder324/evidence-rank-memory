@@ -1,0 +1,700 @@
+{
+  "label": "large-baseline",
+  "embedder": "dashscope",
+  "embedding_model": "text-embedding-v4",
+  "llm_extract_active": false,
+  "weights": {
+    "bm25": 1.15,
+    "dense": 0.45,
+    "overlap": 0.85,
+    "entity": 0.4,
+    "literal": 0.9,
+    "temporal": 0.7,
+    "kind": 0.55,
+    "hop": 0.35,
+    "option": 0.18,
+    "profile": 0.15
+  },
+  "probe_count": 208,
+  "recall_at_5": 1.0,
+  "recall_at_100": 1.0,
+  "mrr": 0.976,
+  "status_accuracy": 0.8558,
+  "by_category": {
+    "alias": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "cengjing-current": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 0.0
+    },
+    "cengjing-history": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 0.0
+    },
+    "chain-current": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "chain-previous": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "code": {
+      "n": 8,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "en-current": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "en-history": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "flood": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "hop": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 0.5,
+      "status_accuracy": 1.0
+    },
+    "isolation": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "job": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "name": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "negation": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "preference": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 0.0
+    },
+    "rule": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "time": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "zh-current": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "zh-history": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    }
+  },
+  "failures": [
+    {
+      "user": "profile-0",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "苹果"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢川菜，现在喜欢苹果。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 编辑 (status=current, time=2023-11-15T01:13:20Z). entities: user 编辑 我的 的职 职业 业是 是编. evidence: 我的职业是编辑"
+      ]
+    },
+    {
+      "user": "profile-1",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "酸奶"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢茶，现在喜欢酸奶。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 律师 (status=current, time=2023-11-15T01:13:20Z). entities: user 律师 我的 的职 职业 业是 是律. evidence: 我的职业是律师"
+      ]
+    },
+    {
+      "user": "profile-2",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "面包"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢咖啡，现在喜欢面包。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 厨师 (status=current, time=2023-11-15T01:13:20Z). entities: user 厨师 我的 的职 职业 业是 是厨. evidence: 我的职业是厨师"
+      ]
+    },
+    {
+      "user": "profile-3",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "米饭"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢面条，现在喜欢米饭。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 司机 (status=current, time=2023-11-15T01:13:20Z). entities: user 司机 我的 的职 职业 业是 是司. evidence: 我的职业是司机"
+      ]
+    },
+    {
+      "user": "profile-4",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "鱼"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢苹果，现在喜欢鱼。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 护士 (status=current, time=2023-11-15T01:13:20Z). entities: user 护士 我的 的职 职业 业是 是护. evidence: 我的职业是护士"
+      ]
+    },
+    {
+      "user": "profile-5",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "豆腐"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢酸奶，现在喜欢豆腐。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 设计师 (status=current, time=2023-11-15T01:13:20Z). entities: user 设计 计师 我的 的职 职业 业是 是设. evidence: 我的职业是设计师"
+      ]
+    },
+    {
+      "user": "profile-6",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "川菜"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢面包，现在喜欢川菜。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 程序员 (status=current, time=2023-11-15T01:13:20Z). entities: user 程序 序员 我的 的职 职业 业是 是程. evidence: 我的职业是程序员"
+      ]
+    },
+    {
+      "user": "profile-7",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "茶"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢米饭，现在喜欢茶。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 教师 (status=current, time=2023-11-15T01:13:20Z). entities: user 教师 我的 的职 职业 业是 是教. evidence: 我的职业是教师"
+      ]
+    },
+    {
+      "user": "profile-8",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "咖啡"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢鱼，现在喜欢咖啡。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 医生 (status=current, time=2023-11-15T01:13:20Z). entities: user 医生 我的 的职 职业 业是 是医. evidence: 我的职业是医生"
+      ]
+    },
+    {
+      "user": "profile-9",
+      "category": "preference",
+      "query": "我现在喜欢吃什么？",
+      "golds": [
+        "面条"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "[2023-11-15T02:13:20Z] user: 我以前喜欢豆腐，现在喜欢面条。",
+        "user rule = 不要在周五安排会议 (status=current, time=2023-11-15T03:13:20Z). entities: user 不要 要在 在周 周五 五安 安排 排会 会议. evidence: 不要在周五安排会议",
+        "user occupation = 会计 (status=current, time=2023-11-15T01:13:20Z). entities: user 会计 我的 的职 职业 业是 是会. evidence: 我的职业是会计"
+      ]
+    },
+    {
+      "user": "cengjing-0",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "佛山"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 杭州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 杭州 经住 住在 在杭 州后 后来 来搬 搬到 到了 了佛 佛山. evidence: 我曾经住在杭州，后来搬到了佛山",
+        "同事 residence = 南京 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 南京 事住 住在 在南. evidence: 同事住在南京",
+        "Active profile:\n- 我曾经 residence = 杭州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 杭州 经住 住在 在杭 州后 后来 来搬 搬到 到了 了佛 佛山\n- 同事 residence = 南京 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-0",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "杭州"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 杭州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 杭州 经住 住在 在杭 州后 后来 来搬 搬到 到了 了佛 佛山. evidence: 我曾经住在杭州，后来搬到了佛山",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在杭州，后来搬到了佛山。",
+        "Active profile:\n- 我曾经 residence = 杭州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 杭州 经住 住在 在杭 州后 后来 来搬 搬到 到了 了佛 佛山\n- 同事 residence = 南京 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-1",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "东莞"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 苏州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 苏州 经住 住在 在苏 州后 后来 来搬 搬到 到了 了东 东莞. evidence: 我曾经住在苏州，后来搬到了东莞",
+        "同事 residence = 杭州 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 杭州 事住 住在 在杭. evidence: 同事住在杭州",
+        "Active profile:\n- 我曾经 residence = 苏州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 苏州 经住 住在 在苏 州后 后来 来搬 搬到 到了 了东 东莞\n- 同事 residence = 杭州 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-1",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "苏州"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 苏州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 苏州 经住 住在 在苏 州后 后来 来搬 搬到 到了 了东 东莞. evidence: 我曾经住在苏州，后来搬到了东莞",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在苏州，后来搬到了东莞。",
+        "Active profile:\n- 我曾经 residence = 苏州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 苏州 经住 住在 在苏 州后 后来 来搬 搬到 到了 了东 东莞\n- 同事 residence = 杭州 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-2",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "南宁"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 无锡 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 无锡 经住 住在 在无 锡后 后来 来搬 搬到 到了 了南 南宁. evidence: 我曾经住在无锡，后来搬到了南宁",
+        "同事 residence = 苏州 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 苏州 事住 住在 在苏. evidence: 同事住在苏州",
+        "Active profile:\n- 我曾经 residence = 无锡 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 无锡 经住 住在 在无 锡后 后来 来搬 搬到 到了 了南 南宁\n- 同事 residence = 苏州 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-2",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "无锡"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 无锡 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 无锡 经住 住在 在无 锡后 后来 来搬 搬到 到了 了南 南宁. evidence: 我曾经住在无锡，后来搬到了南宁",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在无锡，后来搬到了南宁。",
+        "Active profile:\n- 我曾经 residence = 无锡 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 无锡 经住 住在 在无 锡后 后来 来搬 搬到 到了 了南 南宁\n- 同事 residence = 苏州 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-3",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "海口"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 宁波 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 宁波 经住 住在 在宁 波后 后来 来搬 搬到 到了 了海 海口. evidence: 我曾经住在宁波，后来搬到了海口",
+        "同事 residence = 无锡 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 无锡 事住 住在 在无. evidence: 同事住在无锡",
+        "Active profile:\n- 我曾经 residence = 宁波 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 宁波 经住 住在 在宁 波后 后来 来搬 搬到 到了 了海 海口\n- 同事 residence = 无锡 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-3",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "宁波"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 宁波 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 宁波 经住 住在 在宁 波后 后来 来搬 搬到 到了 了海 海口. evidence: 我曾经住在宁波，后来搬到了海口",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在宁波，后来搬到了海口。",
+        "Active profile:\n- 我曾经 residence = 宁波 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 宁波 经住 住在 在宁 波后 后来 来搬 搬到 到了 了海 海口\n- 同事 residence = 无锡 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-4",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "成都"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 合肥 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 合肥 经住 住在 在合 肥后 后来 来搬 搬到 到了 了成 成都. evidence: 我曾经住在合肥，后来搬到了成都",
+        "同事 residence = 宁波 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 宁波 事住 住在 在宁. evidence: 同事住在宁波",
+        "Active profile:\n- 我曾经 residence = 合肥 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 合肥 经住 住在 在合 肥后 后来 来搬 搬到 到了 了成 成都\n- 同事 residence = 宁波 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-4",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "合肥"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 合肥 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 合肥 经住 住在 在合 肥后 后来 来搬 搬到 到了 了成 成都. evidence: 我曾经住在合肥，后来搬到了成都",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在合肥，后来搬到了成都。",
+        "Active profile:\n- 我曾经 residence = 合肥 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 合肥 经住 住在 在合 肥后 后来 来搬 搬到 到了 了成 成都\n- 同事 residence = 宁波 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-5",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "重庆"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 福州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 福州 经住 住在 在福 州后 后来 来搬 搬到 到了 了重 重庆. evidence: 我曾经住在福州，后来搬到了重庆",
+        "同事 residence = 合肥 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 合肥 事住 住在 在合. evidence: 同事住在合肥",
+        "Active profile:\n- 我曾经 residence = 福州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 福州 经住 住在 在福 州后 后来 来搬 搬到 到了 了重 重庆\n- 同事 residence = 合肥 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-5",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "福州"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 福州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 福州 经住 住在 在福 州后 后来 来搬 搬到 到了 了重 重庆. evidence: 我曾经住在福州，后来搬到了重庆",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在福州，后来搬到了重庆。",
+        "Active profile:\n- 我曾经 residence = 福州 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 福州 经住 住在 在福 州后 后来 来搬 搬到 到了 了重 重庆\n- 同事 residence = 合肥 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-6",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "昆明"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 厦门 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 厦门 经住 住在 在厦 门后 后来 来搬 搬到 到了 了昆 昆明. evidence: 我曾经住在厦门，后来搬到了昆明",
+        "同事 residence = 福州 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 福州 事住 住在 在福. evidence: 同事住在福州",
+        "Active profile:\n- 我曾经 residence = 厦门 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 厦门 经住 住在 在厦 门后 后来 来搬 搬到 到了 了昆 昆明\n- 同事 residence = 福州 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-6",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "厦门"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 厦门 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 厦门 经住 住在 在厦 门后 后来 来搬 搬到 到了 了昆 昆明. evidence: 我曾经住在厦门，后来搬到了昆明",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在厦门，后来搬到了昆明。",
+        "Active profile:\n- 我曾经 residence = 厦门 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 厦门 经住 住在 在厦 门后 后来 来搬 搬到 到了 了昆 昆明\n- 同事 residence = 福州 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-7",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "贵阳"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 青岛 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 青岛 经住 住在 在青 岛后 后来 来搬 搬到 到了 了贵 贵阳. evidence: 我曾经住在青岛，后来搬到了贵阳",
+        "同事 residence = 厦门 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 厦门 事住 住在 在厦. evidence: 同事住在厦门",
+        "Active profile:\n- 我曾经 residence = 青岛 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 青岛 经住 住在 在青 岛后 后来 来搬 搬到 到了 了贵 贵阳\n- 同事 residence = 厦门 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-7",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "青岛"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 青岛 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 青岛 经住 住在 在青 岛后 后来 来搬 搬到 到了 了贵 贵阳. evidence: 我曾经住在青岛，后来搬到了贵阳",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在青岛，后来搬到了贵阳。",
+        "Active profile:\n- 我曾经 residence = 青岛 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 青岛 经住 住在 在青 岛后 后来 来搬 搬到 到了 了贵 贵阳\n- 同事 residence = 厦门 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-8",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "拉萨"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 大连 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 大连 经住 住在 在大 连后 后来 来搬 搬到 到了 了拉 拉萨. evidence: 我曾经住在大连，后来搬到了拉萨",
+        "同事 residence = 青岛 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 青岛 事住 住在 在青. evidence: 同事住在青岛",
+        "Active profile:\n- 我曾经 residence = 大连 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 大连 经住 住在 在大 连后 后来 来搬 搬到 到了 了拉 拉萨\n- 同事 residence = 青岛 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-8",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "大连"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 大连 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 大连 经住 住在 在大 连后 后来 来搬 搬到 到了 了拉 拉萨. evidence: 我曾经住在大连，后来搬到了拉萨",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在大连，后来搬到了拉萨。",
+        "Active profile:\n- 我曾经 residence = 大连 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 大连 经住 住在 在大 连后 后来 来搬 搬到 到了 了拉 拉萨\n- 同事 residence = 青岛 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-9",
+      "category": "cengjing-current",
+      "query": "我现在住在哪里？",
+      "golds": [
+        "西安"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 沈阳 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 沈阳 经住 住在 在沈 阳后 后来 来搬 搬到 到了 了西 西安. evidence: 我曾经住在沈阳，后来搬到了西安",
+        "同事 residence = 大连 (status=current, time=2023-11-15T00:13:20Z). entities: 同事 大连 事住 住在 在大. evidence: 同事住在大连",
+        "Active profile:\n- 我曾经 residence = 沈阳 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 沈阳 经住 住在 在沈 阳后 后来 来搬 搬到 到了 了西 西安\n- 同事 residence = 大连 (status=c"
+      ]
+    },
+    {
+      "user": "cengjing-9",
+      "category": "cengjing-history",
+      "query": "我曾经住在哪里？",
+      "golds": [
+        "沈阳"
+      ],
+      "rank": 1,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "reciprocal_rank": 1.0,
+      "status_ok": false,
+      "top": [
+        "我曾经 residence = 沈阳 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 沈阳 经住 住在 在沈 阳后 后来 来搬 搬到 到了 了西 西安. evidence: 我曾经住在沈阳，后来搬到了西安",
+        "[2023-11-14T23:13:20Z] user: 我曾经住在沈阳，后来搬到了西安。",
+        "Active profile:\n- 我曾经 residence = 沈阳 (status=current, time=2023-11-14T23:13:20Z). entities: 我曾 曾经 沈阳 经住 住在 在沈 阳后 后来 来搬 搬到 到了 了西 西安\n- 同事 residence = 大连 (status=c"
+      ]
+    }
+  ]
+}

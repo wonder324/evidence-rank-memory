@@ -1,0 +1,18 @@
+{
+  "embedder": "hash",
+  "weights": {
+    "bm25": 1.15,
+    "dense": 0.45,
+    "overlap": 0.85,
+    "entity": 0.4,
+    "literal": 0.9,
+    "temporal": 0.7,
+    "kind": 0.55,
+    "hop": 0.35,
+    "option": 0.18,
+    "profile": 0.15
+  },
+  "train_mrr": 1.0,
+  "holdout_mrr": 1.0,
+  "probe_count": 13
+}

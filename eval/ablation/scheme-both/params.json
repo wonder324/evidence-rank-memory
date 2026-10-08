@@ -1,0 +1,14 @@
+{
+  "name": "both",
+  "label": "ablation-both",
+  "embedder": "hash",
+  "fusion_weights": "models/fusion_weights.json",
+  "SCHEME_PREF": "1",
+  "SCHEME_HOP": "1",
+  "HOP_RESIDENCE_BONUS": "0.01",
+  "code_files": [
+    "eval/ablation/scheme-pref/code.py",
+    "eval/ablation/scheme-hop/code.py"
+  ],
+  "intent": "Preference replace and meeting-home promotion together. Fusion weights stay identical to the other three arms."
+}

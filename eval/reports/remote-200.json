@@ -1,0 +1,142 @@
+{
+  "label": "remote-200",
+  "target": "https://zyd324.online",
+  "note": "Synthetic probes against the public Add/Search API. Not the official leaderboard score.",
+  "probe_count": 200,
+  "elapsed_sec": 1000.0,
+  "http_errors": 0,
+  "recall_at_5": 1.0,
+  "recall_at_100": 1.0,
+  "mrr": 1.0,
+  "status_accuracy": 1.0,
+  "by_category": {
+    "alias": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "cengjing-current": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "cengjing-history": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "chain-current": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "chain-previous": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "en-current": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "en-history": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "flood": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "hop": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "isolation": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "job": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "name": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "negation": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "preference": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "rule": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "time": {
+      "n": 10,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "zh-current": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    },
+    "zh-history": {
+      "n": 20,
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    }
+  },
+  "failures": [],
+  "errors": []
+}

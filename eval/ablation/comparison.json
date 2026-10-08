@@ -1,0 +1,71 @@
+{
+  "probe_count": 208,
+  "embedder": "hash",
+  "embedding_note": "DashScope text-embedding-v4 returned Arrearage. All four arms use hash embeddings and the same fusion weights. Do not mix these numbers with eval/reports/large-cengjing.json, which used text-embedding-v4.",
+  "fusion_weights": {
+    "bm25": 1.15,
+    "dense": 0.45,
+    "overlap": 0.85,
+    "entity": 0.4,
+    "literal": 0.9,
+    "temporal": 0.7,
+    "kind": 0.55,
+    "hop": 0.35,
+    "option": 0.18,
+    "profile": 0.15
+  },
+  "weights_unchanged": true,
+  "arms": [
+    {
+      "name": "control",
+      "SCHEME_PREF": "0",
+      "SCHEME_HOP": "0",
+      "report": "eval/reports/ablation-control.json",
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 0.976,
+      "status_accuracy": 0.9519
+    },
+    {
+      "name": "pref",
+      "SCHEME_PREF": "1",
+      "SCHEME_HOP": "0",
+      "report": "eval/reports/ablation-pref.json",
+      "code": "eval/ablation/scheme-pref/code.py",
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 0.976,
+      "status_accuracy": 1.0
+    },
+    {
+      "name": "hop",
+      "SCHEME_PREF": "0",
+      "SCHEME_HOP": "1",
+      "HOP_RESIDENCE_BONUS": "0.01",
+      "report": "eval/reports/ablation-hop.json",
+      "code": "eval/ablation/scheme-hop/code.py",
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 0.9519
+    },
+    {
+      "name": "both",
+      "SCHEME_PREF": "1",
+      "SCHEME_HOP": "1",
+      "HOP_RESIDENCE_BONUS": "0.01",
+      "report": "eval/reports/ablation-both.json",
+      "recall_at_5": 1.0,
+      "recall_at_100": 1.0,
+      "mrr": 1.0,
+      "status_accuracy": 1.0
+    }
+  ],
+  "effects": {
+    "pref_only_changes": "preference status 0 to 1. Hop MRR stays 0.5. No other category regressed.",
+    "hop_only_changes": "hop MRR 0.5 to 1. Preference status stays 0. No other category regressed.",
+    "interaction": "additive. Combination reaches MRR 1 and status 1."
+  },
+  "kept": "both",
+  "kept_reason": "Each switch fixes one failure class and does not move the other. Defaults SCHEME_PREF and SCHEME_HOP are now 1."
+}

@@ -1,0 +1,11 @@
+{
+  "name": "control",
+  "label": "ablation-control",
+  "embedder": "hash",
+  "why_not_v4": "DashScope text-embedding-v4 returned Arrearage, so this ablation uses hash embeddings. Fusion weights are unchanged and were trained on hash.",
+  "fusion_weights": "models/fusion_weights.json",
+  "SCHEME_PREF": "0",
+  "SCHEME_HOP": "0",
+  "HOP_RESIDENCE_BONUS": "0.01",
+  "code": "Residence extraction for 我曾经住在X，后来搬到了Y stays on. Preference shift and meeting-home promotion stay off."
+}
