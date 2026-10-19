@@ -12,6 +12,7 @@ from pathlib import Path
 
 from app.config import DEFAULT_WEIGHTS, Settings
 from app.embedder import Embedder, bm25, cosine, pack_vector, unpack_vector
+from app.reranker import CrossReranker
 from app.extract import Fact, extract_facts
 from app.textutil import (
     classify_intent,
@@ -56,6 +57,7 @@ class MemoryStore:
     def __init__(self, settings: Settings, embedder: Embedder | None = None, weights: dict[str, float] | None = None):
         self.settings = settings
         self.embedder = embedder or Embedder(settings)
+        self.reranker = CrossReranker(settings)
         self.weights = dict(DEFAULT_WEIGHTS)
         if weights:
             self.weights.update(weights)
@@ -255,9 +257,24 @@ class MemoryStore:
             self._promote_attribute_alias(query_text, hits)
             self._promote_named_relation(query_text, hits)
             self._promote_social_object(query_text, hits)
+            self._govern(query_text, intent, hits)
+            self._promote_graph(query_text, hits)
+            self._promote_timeline(query_text, hits)
+            self._promote_procedure(query_text, hits)
+            self._promote_care(query_text, hits)
+            self._promote_explicit(query_text, intent, hits)
+            self._shield_private(query_text, intent, hits)
+            self._demote_hearsay(query_text, intent, hits)
+            if self.settings.chronos:
+                self._chronos(query_text, hits)
             hits.sort(key=lambda item: item.score, reverse=True)
             pool = hits[: max(top_k * 4, 40)]
             ranked = self._mmr(pool, top_k)
+            contexts = [
+                hit.content
+                for hit in sorted(hits, key=lambda item: item.raw_bm25, reverse=True)[:5]
+            ]
+            ranked = self.reranker.rerank(query_text, ranked, contexts if self.reranker.use_context else None)
             budget = RESPONSE_IMAGE_BUDGET
             results = []
             total = len(ranked)
@@ -272,6 +289,252 @@ class MemoryStore:
                     }
                 )
             return results
+
+    def _cards(self, hits: list[_Hit]) -> list[tuple[str, str, str, _Hit]]:
+        cards = []
+        for hit in hits:
+            match = re.match(r"(.+?) ([A-Za-z_]+) = (.+?) \(status=", hit.content)
+            if match:
+                cards.append((match.group(1).strip(), match.group(2), match.group(3).strip(), hit))
+        return cards
+
+    def _govern(self, query_text: str, intent: str, hits: list[_Hit]) -> None:
+        if not hits:
+            return
+        history = intent == "history"
+        asking_now = (not history) and (
+            intent == "state" or re.search(r"现在|目前|当前|\bnow\b|\bcurrent\b", query_text, re.I) is not None
+        )
+        cancelled: list[str] = []
+        previous_vals: list[str] = []
+        current_vals: list[str] = []
+        for hit in hits:
+            match = re.search(r"= (.+?) \(status=(current|previous|retracted)", hit.content)
+            if not match:
+                continue
+            value, status = match.group(1), match.group(2)
+            if status == "retracted":
+                cancelled.append(value)
+            elif status == "previous":
+                previous_vals.append(value)
+            else:
+                current_vals.append(value)
+        if history:
+            for hit in hits:
+                if "status=previous" in hit.content or "status=retracted" in hit.content:
+                    hit.score += 0.55
+            return
+        asks_dislike = re.search(r"不喜欢|讨厌|don't like|do not like", query_text, re.I) is not None
+        if not asking_now and not cancelled and not asks_dislike:
+            return
+        for hit in hits:
+            if asking_now and not asks_dislike and ("status=previous" in hit.content or "status=retracted" in hit.content):
+                hit.score -= 1.4
+            if hit.kind != "turn":
+                continue
+            text = hit.content
+            if any(value and value in text for value in cancelled) and re.search(r"忘掉|忘记|取消|记错", query_text) is None:
+                hit.score -= 2.2
+            elif asking_now and any(value and value in text for value in previous_vals):
+                if not any(value and value in text for value in current_vals):
+                    hit.score -= 0.9
+        if asks_dislike and cancelled:
+            disliked = [
+                hit
+                for hit in hits
+                if " preference = " in hit.content and any(value in hit.content for value in cancelled)
+            ]
+            self._lift(hits, disliked)
+
+    def _promote_graph(self, query_text: str, hits: list[_Hit]) -> None:
+        if re.search(r"住|哪里|live|where", query_text, re.I):
+            target = "residence"
+        elif re.search(r"职业|工作|做什么", query_text):
+            target = "occupation"
+        elif re.search(r"手机|电话", query_text):
+            target = "phone"
+        elif "邮箱" in query_text:
+            target = "email"
+        else:
+            return
+        if not hits:
+            return
+        words = (
+            ("见面", "met"),
+            ("导师", "mentor"),
+            ("同事", "colleague"),
+            ("朋友", "friend"),
+            ("同学", "classmate"),
+            ("经理", "manager"),
+            ("学生", "student"),
+            ("mentor", "mentor"),
+            ("colleague", "colleague"),
+            ("friend", "friend"),
+        )
+        found: list[tuple[int, str]] = []
+        for word, attr in words:
+            start = 0
+            while True:
+                index = query_text.lower().find(word.lower(), start)
+                if index < 0:
+                    break
+                found.append((index, attr))
+                start = index + len(word)
+        if re.search(r"\bmet\b", query_text, re.I):
+            found.append((query_text.lower().find("met"), "met"))
+        if not found:
+            return
+        found.sort()
+        rels = [attr for _, attr in found]
+        if re.search(r"\bof\b", query_text, re.I):
+            rels.reverse()
+        cards = self._cards(hits)
+        nodes = {"user"}
+        for attr in rels:
+            nxt: set[str] = set()
+            for subject, attribute, value, _hit in cards:
+                if attribute != attr or subject.lower() not in {node.lower() for node in nodes}:
+                    continue
+                person = value.split(":")[-1] if attr == "met" and ":" in value else value
+                nxt.add(person)
+            if nxt:
+                nodes = nxt
+        lowered = {node.lower() for node in nodes}
+        homes = [hit for subject, attribute, _value, hit in cards if attribute == target and subject.lower() in lowered]
+        self._lift(hits, homes)
+
+    def _chronos(self, query_text: str, hits: list[_Hit]) -> None:
+        """Prefer memories whose text carries the time the question asks for.
+
+        Original memories stay in the list. Only their order changes.
+        """
+        asks_when = re.search(r"什么时候|何时|哪天|哪年|几点|时间|上次|第一次|最后一次", query_text)
+        asks_past = re.search(r"以前|之前|曾经|过去|上次", query_text)
+        asks_now = re.search(r"现在|目前|最近", query_text)
+        asks_after = re.search(r"([\u4e00-\u9fffA-Za-z0-9]{2,12})之[后後]", query_text)
+        if not any((asks_when, asks_past, asks_now, asks_after)):
+            return
+        time_in_text = re.compile(r"\d{4}年|\d{1,2}月|\d{1,2}日|\d{1,2}点|上午|下午|晚上|昨天|上周|上周|凌晨")
+        for hit in hits:
+            text = hit.content or ""
+            if asks_when and time_in_text.search(text):
+                hit.score += 0.55
+            if asks_past and re.search(r"以前|曾经|之前|过去|status=previous", text):
+                hit.score += 0.35
+            if asks_now and not asks_past and re.search(r"现在|目前|最近|status=current", text):
+                hit.score += 0.35
+            if asks_after and asks_after.group(1) in text:
+                hit.score += 0.25
+
+    def _promote_timeline(self, query_text: str, hits: list[_Hit]) -> None:
+        cards = self._cards(hits)
+        events: list[tuple[int, _Hit, str]] = []
+        meetings: list[tuple[int, _Hit, str]] = []
+        for _subject, attribute, value, hit in cards:
+            if not value[:1].isdigit() or ":" not in value:
+                continue
+            head = value.split(":", 1)[0]
+            if not head.isdigit():
+                continue
+            order = int(head)
+            if attribute == "event":
+                events.append((order, hit, value))
+            elif attribute == "met":
+                meetings.append((order, hit, value))
+        meeting_query = "会面" in query_text or "见面" in query_text
+        if re.search(r"第一次|最早|最先|第一站", query_text):
+            pool = meetings if meeting_query and meetings else events
+            if pool:
+                pool.sort()
+                self._lift(hits, [pool[0][1]])
+            return
+        if re.search(r"最后|最晚|最终", query_text):
+            pool = meetings if meeting_query and meetings else events
+            if pool:
+                pool.sort()
+                self._lift(hits, [pool[-1][1]])
+            return
+        after = re.search(r"([\u4e00-\u9fff0-9A-Za-z]{2,16})之后", query_text)
+        if after and events:
+            name = after.group(1)
+            current = [item for item in events if name in item[2] or name in item[1].content]
+            if not current:
+                return
+            later = sorted(item for item in events if item[0] > current[0][0])
+            if later:
+                self._lift(hits, [later[0][1]])
+
+    def _promote_procedure(self, query_text: str, hits: list[_Hit]) -> None:
+        if not hits or re.search(r"帮我|按我的|安排|回复|写一封|应该怎么", query_text) is None:
+            return
+        rules = [hit for hit in hits if hit.content.startswith("user rule = ") and "status=current" in hit.content]
+        if not rules:
+            return
+        best = max(hit.score for hit in hits)
+        ordered = sorted(rules, key=lambda hit: hit.score, reverse=True)[:3]
+        step = self.settings.hop_residence_bonus
+        for index, hit in enumerate(ordered):
+            hit.score = max(hit.score, best + step * (len(ordered) - index) + 0.2)
+
+    def _promote_care(self, query_text: str, hits: list[_Hit]) -> None:
+        if not hits or re.search(r"忌口|过敏|照顾我|不能吃", query_text) is None:
+            return
+        cards = [
+            hit
+            for subject, attribute, _value, hit in self._cards(hits)
+            if subject == "user" and attribute == "allergy" and "status=current" in hit.content
+        ]
+        self._lift(hits, cards)
+
+    def _promote_explicit(self, query_text: str, intent: str, hits: list[_Hit]) -> None:
+        if not hits or intent == "history" or re.search(r"导师|同事|朋友|同学|经理|学生|见面", query_text):
+            return
+        wanted = (
+            ("工号", "employee_id"),
+            ("部门", "department"),
+            ("手机号", "phone"),
+            ("邮箱", "email"),
+            ("城市", "city"),
+            ("称呼", "nickname"),
+            ("职业", "occupation"),
+            ("名字", "name"),
+        )
+        attribute = next((name for word, name in wanted if word in query_text), "")
+        if not attribute:
+            return
+        cards = [
+            hit
+            for subject, attr, _value, hit in self._cards(hits)
+            if subject == "user" and attr == attribute and "status=current" in hit.content
+        ]
+        self._lift(hits, cards)
+
+    def _shield_private(self, query_text: str, intent: str, hits: list[_Hit]) -> None:
+        if not hits or intent == "history" or re.search(r"忘掉了什么|忘记了什么|哪些隐私", query_text):
+            return
+        private = {"phone", "email", "id_card", "address", "medical"}
+        hidden: list[str] = []
+        for subject, attribute, value, hit in self._cards(hits):
+            if subject == "user" and attribute in private and "status=retracted" in hit.content and value != "*":
+                hidden.append(value)
+        if not hidden:
+            return
+        hidden_set = set(hidden)
+        for hit in hits:
+            match = re.search(r"= (.+?) \(status=(current|previous|retracted)", hit.content)
+            if match and match.group(1) in hidden_set and match.group(2) != "current":
+                hit.score -= 20
+            elif hit.kind in {"turn", "profile"} and any(value in hit.content for value in hidden_set):
+                hit.score -= 20
+
+    def _demote_hearsay(self, query_text: str, intent: str, hits: list[_Hit]) -> None:
+        if not hits or intent == "history" or re.search(r"我(现在)?住", query_text) is None:
+            return
+        if re.search(r"导师|同事|朋友|同学|经理|学生|见面", query_text):
+            return
+        for hit in hits:
+            if re.search(r"听说|据说|没有核实|未核实", hit.content):
+                hit.score -= 20
 
     def _relation_names(self, query_text: str) -> list[str]:
         blocked = {
@@ -527,9 +790,23 @@ class MemoryStore:
         }
 
     def _apply_fact(self, fact: Fact, user_id: str, session_id: str, request_id: str, role: str, created_ms: int, when: str, embedding) -> None:
+        if fact.mode == "correct":
+            self._correct_fact(
+                fact,
+                user_id=user_id,
+                session_id=session_id,
+                request_id=request_id,
+                role=role,
+                created_ms=created_ms,
+                when=when,
+            )
+            return
         if fact.mode == "retract":
             self._retract(user_id, fact, created_ms)
             status = "retracted"
+            active = 0
+        elif fact.mode == "archive":
+            status = "previous"
             active = 0
         else:
             status = "current"
@@ -551,8 +828,50 @@ class MemoryStore:
             active=active,
             entities=fact.entities,
         )
-        if fact.mode == "replace" and fact.attribute in {"residence", "occupation", "name", "phone", "email", "timezone", "preference", "other"}:
+        if fact.mode == "replace":
             self._supersede_previous(user_id, fact.attr_key, public_id, created_ms)
+
+    def _correct_fact(self, fact: Fact, user_id: str, session_id: str, request_id: str, role: str, created_ms: int, when: str) -> None:
+        old = fact.replaces
+        rows = self._conn.execute(
+            """
+            SELECT id, content, fact_value, attr_key FROM memories
+            WHERE user_id = ? AND active = 1 AND kind = 'fact'
+            ORDER BY created_ms DESC
+            """,
+            (user_id,),
+        ).fetchall()
+        subject, attribute = "user", "residence"
+        for row in rows:
+            if old and old in (row["fact_value"] or ""):
+                replaced = row["content"].replace("status=current", "status=retracted", 1)
+                self._conn.execute(
+                    "UPDATE memories SET active = 0, content = ? WHERE id = ?",
+                    (replaced, row["id"]),
+                )
+                attr_key = row["attr_key"] or ""
+                if "|" in attr_key:
+                    subject, attribute = attr_key.split("|", 1)
+                break
+        corrected = Fact(
+            subject=subject,
+            attribute=attribute,
+            value=fact.value,
+            evidence=fact.evidence,
+            mode="replace",
+            entities=fact.entities,
+        )
+        vector = self.embedder.embed(corrected.render("current", when))
+        self._apply_fact(
+            corrected,
+            user_id=user_id,
+            session_id=session_id,
+            request_id=request_id,
+            role=role,
+            created_ms=created_ms,
+            when=when,
+            embedding=vector,
+        )
 
     def _supersede_previous(self, user_id: str, attr_key: str, public_id: str, created_ms: int) -> None:
         rows = self._conn.execute(
@@ -580,7 +899,7 @@ class MemoryStore:
         ).fetchall()
         for row in rows:
             value = (row["fact_value"] or "").lower()
-            if needle in value or value in needle:
+            if needle == "*" or needle in value or value in needle:
                 replaced = row["content"].replace("status=current", "status=retracted", 1)
                 self._conn.execute(
                     "UPDATE memories SET active = 0, content = ? WHERE id = ?",
@@ -674,6 +993,10 @@ class MemoryStore:
             (user_id,),
         ).fetchall()
         if not rows:
+            self._conn.execute(
+                "UPDATE memories SET content = ?, active = 0 WHERE user_id = ? AND kind = 'profile'",
+                ("Active profile:", user_id),
+            )
             return
         lines = ["Active profile:"]
         for row in rows[-40:]:

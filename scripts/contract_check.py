@@ -12,6 +12,7 @@ TMP = tempfile.mkdtemp(prefix="aml-contract-")
 os.environ["DATA_DIR"] = TMP
 os.environ["EMBEDDER"] = "hash"
 os.environ["LLM_EXTRACT"] = "0"
+os.environ["RERANKER"] = "0"
 os.environ["MEMORY_API_KEY"] = "secret"
 os.environ["FUSION_WEIGHTS"] = str(Path(__file__).resolve().parents[1] / "models" / "fusion_weights.json")
 

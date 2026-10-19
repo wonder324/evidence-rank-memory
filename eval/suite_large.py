@@ -331,6 +331,7 @@ def _rank(rows: list[dict], golds: list[str], status: str | None) -> int | None:
 
 
 def run(label: str, embedder_name: str | None = None) -> dict:
+    os.environ["RERANKER"] = "0"
     if embedder_name:
         os.environ["EMBEDDER"] = embedder_name
     os.environ["EVAL_STRICT_EMBED"] = "1"

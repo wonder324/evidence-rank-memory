@@ -11,15 +11,48 @@ from app.textutil import tokenize
 
 logger = logging.getLogger("memory.llm")
 
+_LLM_MODES = {"replace", "append", "retract", "archive", "correct"}
+_LLM_ATTRS = {
+    "residence",
+    "name",
+    "occupation",
+    "preference",
+    "rule",
+    "event",
+    "other",
+    "mentor",
+    "colleague",
+    "friend",
+    "classmate",
+    "manager",
+    "student",
+    "met",
+    "phone",
+    "email",
+    "city",
+    "employee_id",
+    "department",
+    "id_card",
+    "allergy",
+    "nickname",
+    "address",
+    "medical",
+}
+
 SYSTEM = (
     "You extract atomic personal memories from a conversation snippet. "
     "Do not answer questions and do not invent facts that are not stated. "
     "Return a JSON object {\"facts\": [{\"subject\": str, \"attribute\": str, "
-    "\"value\": str, \"mode\": \"replace\"|\"append\"|\"retract\"}]}. "
-    "attribute must be residence, name, occupation, preference, rule, event, or other. "
-    "Use mode=replace for a single current value such as home city, job, or name. "
-    "Use mode=append for preferences, rules, and events that can coexist. "
-    "Use mode=retract when the speaker cancels an earlier preference or plan."
+    "\"value\": str, \"mode\": \"replace\"|\"append\"|\"retract\"|\"archive\"|\"correct\", "
+    "\"replaces\": str}]}. "
+    "attribute is one of residence, name, occupation, preference, rule, event, "
+    "mentor, colleague, friend, classmate, manager, student, met, phone, email, "
+    "city, employee_id, department, id_card, allergy, nickname, address, medical, other. "
+    "Use mode=replace for one current value. Use mode=archive for a past value that "
+    "must not become current. Use mode=append for preferences, rules, relations, and events. "
+    "Use mode=retract when the speaker cancels a fact, and value='*' to cancel a whole attribute. "
+    "Use mode=correct with replaces set to the wrong value. "
+    "Number ordered stops as value '1:place'. Do not store hearsay as the user's own residence."
 )
 
 
@@ -57,10 +90,11 @@ def llm_facts(settings: Settings, text: str) -> list[Fact]:
         attribute = str(item.get("attribute") or "other").strip().lower()
         mode = str(item.get("mode") or "append").strip().lower()
         subject = str(item.get("subject") or "user").strip() or "user"
-        if not value or mode not in {"replace", "append", "retract"}:
+        if not value or mode not in _LLM_MODES:
             continue
-        if attribute not in {"residence", "name", "occupation", "preference", "rule", "event", "other"}:
+        if attribute not in _LLM_ATTRS:
             attribute = "other"
+        replaces = str(item.get("replaces") or "").strip()[:80]
         facts.append(
             Fact(
                 subject=subject[:80],
@@ -69,6 +103,7 @@ def llm_facts(settings: Settings, text: str) -> list[Fact]:
                 evidence=snippet[:240],
                 mode=mode,
                 entities=tokenize(f"{subject} {value}")[:12],
+                replaces=replaces,
             )
         )
     return facts

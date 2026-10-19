@@ -1,57 +1,97 @@
-# Agent Memory Challenge 参赛服务
+# evidence-rank-memory · v0.4.0
 
-文本、代码、多模态共用这一套 Add / Search。平台负责回答和评分，这里只返回记忆证据。
+提供 Add / Search 接口的记忆检索服务。Add 保存对话并抽取事实；Search 在用户范围内融合 BM25、向量、实体、数字、时间及多跳线索，返回记忆证据，由调用方生成回答。可选使用 BGE cross-encoder 对候选结果重排。
 
-## 本地跑起来
+本次发布取自服务器 `agent-memory-v0.4.0` 的源码快照；`app/`、`scripts/`、`train/` 和 `eval/` 中的 Python 文件保持原样。发布不包含运行数据库、密钥、虚拟环境、外部数据集、生成的训练集和模型权重。文件校验见 `SOURCE_MANIFEST.json`。
+
+## 本地启动
+
+建议使用 Python 3.12 或更新版本。
 
 ```bash
-cd agent-memory-challenge
+git clone https://github.com/wonder324/evidence-rank-memory.git
+cd evidence-rank-memory
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-python -m train.fit_weights
+cp .env.example .env
 python scripts/contract_check.py
 python -m app
 ```
 
-健康检查是 `GET /health`。写入是 `POST /add`，检索是 `POST /search`。报名时填写公网地址，例如 `https://你的域名/add` 和 `https://你的域名/search`。
+`.env.example` 默认使用本地哈希向量、规则抽取并关闭重排，不需要外部 API 密钥。数据保存在 `data/memory.db`。API 密钥为空时不鉴权；公网部署请在 `.env` 设置自己的 `MEMORY_API_KEY`。
 
-组别是开源方法榜。向量用 `text-embedding-v4`。Add 阶段的事实抽取必须调用真实的 `gpt-4o-mini`：在 `.env` 填入 `OPENAI_API_KEY`，`LLM_MODEL` 保持 `gpt-4o-mini`。密钥留空时只有规则抽取，不能拿去报名。不要把百炼密钥或 `qwen-plus` 写成这个模型。
+## 接口
 
-换了向量模型之后重新执行 `python -m train.fit_weights`。评测流量不能用来训练，任务结束后 30 天内执行下面的命令删数据：
+- `GET /health`：返回 `{"status":"ok","system":"evidence-rank-memory","version":"0.4.0"}`。
+- `POST /add`：保存一个用户会话的消息。
+- `POST /search`：按 `user_id` 检索记忆证据。
 
-```bash
-python -c "from app.config import get_settings; from app.embedder import Embedder; from app.store import MemoryStore; s=get_settings(); MemoryStore(s, Embedder(s), s.weights()).purge_all()"
-```
-
-## 报名时可以直接粘贴的说明
-
-系统名称：`evidence-rank-memory`  
-版本：`0.1.0`  
-赛道：文本记忆  
-组别：开源方法榜  
-鉴权：Bearer，密钥等于部署环境里的 `MEMORY_API_KEY`（见本机 `.env`，不要把 `.env` 提交进仓库）  
-接口：`https://zyd324.online/health`、`https://zyd324.online/add`、`https://zyd324.online/search`
-
-方法说明：参赛系统只提供 Add 与 Search。Add 同步保存原始对话，并用规则加 gpt-4o-mini 抽取居住地、姓名、职业、偏好、规则和事件；单值事实被新值替换后仍保留旧值。向量模型是 text-embedding-v4。Search 在 `user_id` 内做 BM25、向量、实体、数字和时间意图融合，必要时按实体做二跳，返回记忆证据，不生成答案。权重由合成探针拟合，没有使用评测流量。代码在公开仓库的固定 commit。未封装 Mem0、Zep 或其他未注明的仓库。
-
-公开仓库：https://github.com/wonder324/evidence-rank-memory
-
-容量：单进程，默认同时处理 8 个 Add/Search；超出返回 HTTP 429，`Retry-After: 2`。正式评测 `top_k` 为 100。单个用户记忆不超过 2500 条时全量打分，超过后用 FTS 取最多 800 条候选，并保留当前有效事实。图片单张不超过 10MiB，一次 Search 返回的图片总量不超过 24MiB。平台单次请求上限 30 分钟。
-
-原创声明：本系统为本次赛事独立实现，使用公开的 BM25 与向量检索思路。未封装 Mem0、Zep 或其他未注明的仓库。若后续复用论文或代码，必须在申请里补上原作者、技术报告和改动。
-
-部署示例：
+设置 `MEMORY_API_KEY` 后，写入和检索需发送 `Authorization: Bearer <你的密钥>`，也支持 `X-Api-Key`。健康检查无需鉴权。
 
 ```bash
-docker build -t evidence-rank-memory .
-docker run --env-file .env -p 8080:8080 evidence-rank-memory
+curl http://127.0.0.1:8080/health
+curl http://127.0.0.1:8080/add \
+  -H 'Content-Type: application/json' \
+  -d '{"request_id":"demo-1","user_id":"demo","session_id":"s1","messages":[{"role":"user","content":"我现在住在南京。"}]}'
+curl http://127.0.0.1:8080/search \
+  -H 'Content-Type: application/json' \
+  -d '{"user_id":"demo","query":"我现在住在哪里？","top_k":5}'
 ```
 
-公网机器上还需要一层 HTTPS。平台拒绝 localhost、内网地址，以及写在 URL 里的账号密码。
+Add 的成功响应包含 `success`、`request_id`、`user_id` 和 `session_id`；Search 返回 `data` 数组。检索按用户隔离，`request_id` 用于幂等写入。默认最多并发处理 8 个 Add/Search，请求超限返回 HTTP 429，可用 `MAX_INFLIGHT` 调整。
 
-检查还缺什么：
+## 启用外部模型
+
+在 `.env` 中配置：
+
+```dotenv
+EMBEDDER=dashscope
+DASHSCOPE_API_KEY=替换为你自己的密钥
+EMBEDDING_MODEL=text-embedding-v4
+LLM_EXTRACT=1
+OPENAI_API_KEY=替换为你自己的密钥
+OPENAI_BASE_URL=https://api.openai.com/v1
+LLM_MODEL=gpt-4o-mini
+```
+
+向量 API 失败时，源码默认回退到哈希向量；设置 `EVAL_STRICT_EMBED=1` 可在失败时直接报错。不同向量模型的数据应使用不同的 `DATA_DIR`，避免混用向量。
+
+重排器仅从本地加载模型。先自行下载 `BAAI/bge-reranker-base`：
 
 ```bash
-python scripts/check_ready.py
+python -c 'from huggingface_hub import snapshot_download; snapshot_download(repo_id="BAAI/bge-reranker-base", local_dir="models/bge-reranker-base")'
 ```
+
+然后在 `.env` 设置：
+
+```dotenv
+RERANKER=1
+RERANKER_MODEL=models/bge-reranker-base
+RERANKER_TOP_N=20
+RERANKER_BLEND=0.45
+```
+
+模型下载和外部 API 由使用者自行配置。第三方模型与数据集遵循各自的许可证和服务条款，本仓库不重新分发这些资产。
+
+## 测试与训练脚本
+
+`python scripts/contract_check.py` 使用独立临时数据库，覆盖鉴权、Add/Search、幂等、用户隔离、中英文事实和图片内容等契约行为，并关闭外部模型调用。
+
+`python -m train.fit_weights` 在脚本内置的合成对话上拟合检索融合权重，会覆盖 `models/fusion_weights.json`。日常启动可直接使用仓库内已有权重。
+
+`eval/` 下的评测脚本、`train/build_v3_pairs.py` 和 `train/train_v3.py` 保留用于复现实验；涉及 PerLTQA、LongMemEval 等外部数据的脚本需要自行按脚本路径准备数据。生成的 `train/v3/`、`eval/external/` 和运行产物未纳入发布。
+
+## Docker
+
+```bash
+docker build -t evidence-rank-memory:0.4.0 .
+docker run --env-file .env -p 8080:8080 \
+  -v "$(pwd)/data:/app/data" evidence-rank-memory:0.4.0
+```
+
+使用重排器时另外挂载模型目录，并将 `RERANKER_MODEL` 设为容器内路径。公网 HTTPS 可参考 `deploy/Caddyfile`，将域名替换为自己的域名。
+
+## 许可证
+
+本项目源码采用 [MIT License](LICENSE)。Python 依赖和可选第三方模型、数据集仍适用各自的许可证。
