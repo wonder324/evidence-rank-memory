@@ -4,6 +4,8 @@ import asyncio
 import logging
 import os
 import threading
+import time
+import hashlib
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
@@ -11,11 +13,11 @@ from fastapi.responses import JSONResponse
 from app.config import SYSTEM_NAME, SYSTEM_VERSION, get_settings
 from app.embedder import Embedder
 from app.extract import Fact
-from app.llm_extract import llm_facts
+from app.llm_extract import LLMExtractionError, llm_facts
 from app.store import ContractError, MemoryStore
 from app.textutil import flatten_content
 
-logger = logging.getLogger("memory.api")
+logger = logging.getLogger("uvicorn.error.memory")
 settings = get_settings()
 store = MemoryStore(settings, Embedder(settings), settings.weights())
 app = FastAPI(title="Agent Memory Challenge", version="1.0.0")
@@ -49,13 +51,46 @@ def health():
 
 
 def _handle_add(payload: dict):
+    started = time.monotonic()
+    ref = hashlib.sha256(str(payload.get("request_id", "")).encode()).hexdigest()[:16]
+    logger.info("add start ref=%s", ref)
+    try:
+        result = _handle_add_inner(payload)
+        status = result.status_code if isinstance(result, JSONResponse) else 200
+        logger.info("add complete ref=%s status=%s seconds=%.3f", ref, status, time.monotonic() - started)
+        return result
+    except Exception:
+        logger.exception("add unhandled ref=%s seconds=%.3f", ref, time.monotonic() - started)
+        raise
+
+
+def _handle_add_inner(payload: dict):
     messages = payload.get("messages")
     if not isinstance(messages, list):
         return _reason(422, "messages must be a list")
+    request_id = str(payload.get("request_id") or "")
+    user_id = str(payload.get("user_id") or "")
+    session_id = str(payload.get("session_id") or "")
+    if not request_id or not user_id or not session_id or not messages:
+        return _reason(422, "request_id, user_id, session_id and messages are required")
+    try:
+        # Validation still runs on retries; successful replays require no model API.
+        for message in messages:
+            store._prepare_message(message)
+        if store.add_completed(request_id, user_id, session_id):
+            return {"success": True, "request_id": payload["request_id"],
+                    "user_id": payload["user_id"], "session_id": payload["session_id"]}
+    except ContractError as exc:
+        return _reason(exc.status, exc.reason)
     extra: list[Fact] = []
     if settings.llm_extract:
         blob = "\n".join(flatten_content(message.get("content")) for message in messages if isinstance(message, dict))
-        extra = llm_facts(settings, blob)
+        try:
+            extra = llm_facts(settings, blob)
+        except LLMExtractionError:
+            return JSONResponse(status_code=503,
+                                content={"detail": {"reason": "fact extraction unavailable; retry the same request_id"}},
+                                headers={"Retry-After": "2"})
     try:
         store.add(
             request_id=str(payload.get("request_id") or ""),

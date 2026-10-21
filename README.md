@@ -2,7 +2,7 @@
 
 提供 Add / Search 接口的记忆检索服务。Add 保存对话并抽取事实；Search 在用户范围内融合 BM25、向量、实体、数字、时间及多跳线索，返回记忆证据，由调用方生成回答。可选使用 BGE cross-encoder 对候选结果重排。
 
-本次发布取自服务器 `agent-memory-v0.4.0` 的源码快照；`app/`、`scripts/`、`train/` 和 `eval/` 中的 Python 文件保持原样。发布不包含运行数据库、密钥、虚拟环境、外部数据集、生成的训练集和模型权重。文件校验见 `SOURCE_MANIFEST.json`。
+最初的 v0.4.0 发布取自服务器 `agent-memory-v0.4.0` 的源码快照；`app/`、`scripts/`、`train/` 和 `eval/` 中的 Python 文件在导入时保持原样。发布不包含运行数据库、密钥、虚拟环境、外部数据集、生成的训练集和模型权重。原始导入快照的文件校验见 `SOURCE_MANIFEST.json`；后续的网关兼容修复见 [恢复说明](docs/RECOVERY.md)。
 
 ## 本地启动
 
@@ -95,3 +95,7 @@ docker run --env-file .env -p 8080:8080 \
 ## 许可证
 
 本项目源码采用 [MIT License](LICENSE)。Python 依赖和可选第三方模型、数据集仍适用各自的许可证。
+
+## 网关兼容与恢复
+
+参见 [恢复说明](docs/RECOVERY.md)。开启 `LLM_EXTRACT_STRICT=1` 后，已启用的模型抽取若失败，将在该次 Add 写入前返回 503，调用方可使用相同 `request_id` 重试。已有成功 Add 的重试会先检查持久化幂等记录，避免重复模型调用。
