@@ -1,4 +1,4 @@
-# evidence-rank-memory · v0.4.0
+# evidence-rank-memory · v0.4.1
 
 提供 Add / Search 接口的记忆检索服务。Add 保存对话并抽取事实；Search 在用户范围内融合 BM25、向量、实体、数字、时间及多跳线索，返回记忆证据，由调用方生成回答。可选使用 BGE cross-encoder 对候选结果重排。
 
@@ -23,7 +23,7 @@ python -m app
 
 ## 接口
 
-- `GET /health`：返回 `{"status":"ok","system":"evidence-rank-memory","version":"0.4.0"}`。
+- `GET /health`：返回 `{"status":"ok","system":"evidence-rank-memory","version":"0.4.1"}`。
 - `POST /add`：保存一个用户会话的消息。
 - `POST /search`：按 `user_id` 检索记忆证据。
 
@@ -85,9 +85,9 @@ RERANKER_BLEND=0.45
 ## Docker
 
 ```bash
-docker build -t evidence-rank-memory:0.4.0 .
+docker build -t evidence-rank-memory:0.4.1 .
 docker run --env-file .env -p 8080:8080 \
-  -v "$(pwd)/data:/app/data" evidence-rank-memory:0.4.0
+  -v "$(pwd)/data:/app/data" evidence-rank-memory:0.4.1
 ```
 
 使用重排器时另外挂载模型目录，并将 `RERANKER_MODEL` 设为容器内路径。公网 HTTPS 可参考 `deploy/Caddyfile`，将域名替换为自己的域名。

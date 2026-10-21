@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SYSTEM_NAME = "evidence-rank-memory"
-SYSTEM_VERSION = "0.4.0"
+SYSTEM_VERSION = "0.4.1"
 
 
 def load_env_file(path: Path | None = None) -> None:

@@ -44,6 +44,19 @@ class GatewayRecoveryTests(unittest.TestCase):
     def test_observed_bracket_escaping_without_envelope(self):
         self.assertEqual(parse_fact_payload('{"facts": \\[\\]}'), {"facts": []})
 
+    def test_extra_opening_angle_bracket(self):
+        self.assertEqual(parse_fact_payload('<{"facts": \\[\\]}'), {"facts": []})
+
+    def test_fenced_prose_before_json(self):
+        self.assertEqual(parse_fact_payload('``` \nSynthetic explanation\n```\n{"facts": \\[\\]}'),
+                         {"facts": []})
+
+    def test_damaged_separators_and_repeated_fragments_stay_rejected(self):
+        for text in ['<escape{"facts": \\[{"value"\\::"Nanjing"}\\]}',
+                     '<escape{"facts": \\[{"attribute"\\:{"facts": \\[\\]}']:
+            with self.subTest(text=text), self.assertRaises(LLMExtractionError):
+                parse_fact_payload(text)
+
     def test_marker_in_normal_json_string_is_not_an_envelope(self):
         payload = {"facts": [{"value": "literal <escape text"}]}
         self.assertEqual(parse_fact_payload(json.dumps(payload)), payload)

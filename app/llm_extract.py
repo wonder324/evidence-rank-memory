@@ -28,12 +28,23 @@ def _unwrap_gateway_json(content: str) -> str:
         first_newline = text.index("\n")
         if text.endswith("```"):
             text = text[first_newline + 1:-3].strip()
+    # Observed gateway replies may prefix JSON with a fenced prose explanation.
+    # Discard that complete block only when a recognizable payload follows it.
+    if text.startswith("```"):
+        first_newline = text.find("\n")
+        fence_end = text.find("```", first_newline + 1) if first_newline >= 0 else -1
+        if fence_end >= 0:
+            rest = text[fence_end + 3:].strip()
+            if rest.startswith(("{", "<escape", "<{")):
+                text = rest
     # Some responses put a prose/code block before the transport envelope.
     # Never treat '<escape' inside a JSON string as a transport envelope.
     if not text.startswith(("{", "[", '"')):
         marker = text.find("<escape")
         if marker >= 0:
             text = text[marker + len("<escape"):].strip()
+        elif text.startswith("<{"):
+            text = text[1:]
     out = []
     in_string = False
     escaped = False
@@ -69,13 +80,14 @@ def parse_fact_payload(content: str) -> dict:
         else:
             payload, end = json.JSONDecoder().raw_decode(normalized)
             # Only the actually observed envelope endings are accepted.
-            if normalized[end:].strip() not in {"", ">", "\\</", "</escape>"}:
+            if normalized[end:].strip() not in {"", ">", "\\</", "\\</escape", "</escape>"}:
                 raise ValueError("unexpected trailing extractor output")
     except (ValueError, TypeError) as exc:
         raise LLMExtractionError("extractor returned invalid JSON") from exc
     if not isinstance(payload, dict) or not isinstance(payload.get("facts"), list):
         raise LLMExtractionError("extractor payload must contain a facts array")
     return payload
+
 
 _LLM_MODES = {"replace", "append", "retract", "archive", "correct"}
 _LLM_ATTRS = {
