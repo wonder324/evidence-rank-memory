@@ -123,6 +123,21 @@ class MemoryStore:
         )
         self._conn.commit()
 
+    def add_completed(self, request_id: str, user_id: str, session_id: str) -> bool:
+        """Check persisted idempotency state before repeating model calls.
+
+        Keep the original identity/conflict contract and final transaction check.
+        """
+        with self._lock:
+            existing = self._conn.execute(
+                "SELECT user_id, session_id FROM adds WHERE request_id = ?", (request_id,)
+            ).fetchone()
+            if not existing:
+                return False
+            if existing["user_id"] != user_id or existing["session_id"] != session_id:
+                raise ContractError(409, "request_id is already bound to another payload")
+            return True
+
     def add(self, request_id: str, user_id: str, session_id: str, messages: list[dict], extra_facts: list[Fact] | None = None) -> None:
         if not request_id or not user_id or not session_id:
             raise ContractError(422, "request_id, user_id and session_id are required")

@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SYSTEM_NAME = "evidence-rank-memory"
-SYSTEM_VERSION = "0.4.0"
+SYSTEM_VERSION = "0.4.1"
 
 
 def load_env_file(path: Path | None = None) -> None:
@@ -61,6 +61,7 @@ class Settings:
     dashscope_api_key: str = field(default_factory=lambda: os.environ.get("DASHSCOPE_API_KEY", "").strip())
     embedding_model: str = field(default_factory=lambda: os.environ.get("EMBEDDING_MODEL", "text-embedding-v4"))
     llm_extract: bool = field(default_factory=lambda: os.environ.get("LLM_EXTRACT", "0").strip() in {"1", "true", "yes"})
+    llm_extract_strict: bool = field(default_factory=lambda: os.environ.get("LLM_EXTRACT_STRICT", "0").strip() in {"1", "true", "yes"})
     openai_api_key: str = field(default_factory=lambda: os.environ.get("OPENAI_API_KEY", "").strip())
     openai_base_url: str = field(default_factory=lambda: os.environ.get("OPENAI_BASE_URL", "https://api.openai.com/v1").rstrip("/"))
     llm_model: str = field(default_factory=lambda: os.environ.get("LLM_MODEL", "gpt-4o-mini"))

@@ -1,8 +1,8 @@
-# evidence-rank-memory · v0.4.0
+# evidence-rank-memory · v0.4.1
 
 提供 Add / Search 接口的记忆检索服务。Add 保存对话并抽取事实；Search 在用户范围内融合 BM25、向量、实体、数字、时间及多跳线索，返回记忆证据，由调用方生成回答。可选使用 BGE cross-encoder 对候选结果重排。
 
-本次发布取自服务器 `agent-memory-v0.4.0` 的源码快照；`app/`、`scripts/`、`train/` 和 `eval/` 中的 Python 文件保持原样。发布不包含运行数据库、密钥、虚拟环境、外部数据集、生成的训练集和模型权重。文件校验见 `SOURCE_MANIFEST.json`。
+最初的 v0.4.0 发布取自服务器 `agent-memory-v0.4.0` 的源码快照；`app/`、`scripts/`、`train/` 和 `eval/` 中的 Python 文件在导入时保持原样。发布不包含运行数据库、密钥、虚拟环境、外部数据集、生成的训练集和模型权重。原始导入快照的文件校验见 `SOURCE_MANIFEST.json`；后续的网关兼容修复见 [恢复说明](docs/RECOVERY.md)。
 
 ## 本地启动
 
@@ -23,7 +23,7 @@ python -m app
 
 ## 接口
 
-- `GET /health`：返回 `{"status":"ok","system":"evidence-rank-memory","version":"0.4.0"}`。
+- `GET /health`：返回 `{"status":"ok","system":"evidence-rank-memory","version":"0.4.1"}`。
 - `POST /add`：保存一个用户会话的消息。
 - `POST /search`：按 `user_id` 检索记忆证据。
 
@@ -85,9 +85,9 @@ RERANKER_BLEND=0.45
 ## Docker
 
 ```bash
-docker build -t evidence-rank-memory:0.4.0 .
+docker build -t evidence-rank-memory:0.4.1 .
 docker run --env-file .env -p 8080:8080 \
-  -v "$(pwd)/data:/app/data" evidence-rank-memory:0.4.0
+  -v "$(pwd)/data:/app/data" evidence-rank-memory:0.4.1
 ```
 
 使用重排器时另外挂载模型目录，并将 `RERANKER_MODEL` 设为容器内路径。公网 HTTPS 可参考 `deploy/Caddyfile`，将域名替换为自己的域名。
@@ -95,3 +95,7 @@ docker run --env-file .env -p 8080:8080 \
 ## 许可证
 
 本项目源码采用 [MIT License](LICENSE)。Python 依赖和可选第三方模型、数据集仍适用各自的许可证。
+
+## 网关兼容与恢复
+
+参见 [恢复说明](docs/RECOVERY.md)。开启 `LLM_EXTRACT_STRICT=1` 后，已启用的模型抽取若失败，将在该次 Add 写入前返回 503，调用方可使用相同 `request_id` 重试。已有成功 Add 的重试会先检查持久化幂等记录，避免重复模型调用。
