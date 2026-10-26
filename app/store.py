@@ -64,6 +64,8 @@ class MemoryStore:
         self.path = Path(settings.data_dir)
         self.path.mkdir(parents=True, exist_ok=True)
         self._lock = threading.Lock()
+        # Bound concurrent snapshots and scoring on small-memory hosts.
+        self._search_slots = threading.BoundedSemaphore(max(1, settings.search_max_active))
         self._conn = sqlite3.connect(self.path / "memory.db", check_same_thread=False)
         self._conn.row_factory = sqlite3.Row
         self._conn.execute("PRAGMA journal_mode=WAL")
@@ -234,6 +236,12 @@ class MemoryStore:
         intent = classify_intent(query_text)
         q_numbers = numbers_in(query_text)
         q_entities = [tok for tok in q_tokens if len(tok) > 1]
+        with self._search_slots:
+            return self._search_snapshot(query_text, user_id, top_k, options, q_terms, q_tokens, intent, q_numbers, q_entities)
+
+    def _search_snapshot(self, query_text, user_id, top_k, options, q_terms, q_tokens, intent, q_numbers, q_entities):
+        # Copy all database-dependent state while holding the connection lock.
+        # Each search owns its _Hit objects; scoring and external I/O need no DB lock.
         with self._lock:
             hits = self._candidate_hits(user_id, q_terms)
             if not hits:
@@ -244,66 +252,66 @@ class MemoryStore:
             n_docs = int(stats["n_docs"]) if stats else len(hits)
             avg_len = (int(stats["sum_len"]) / n_docs) if stats and n_docs else 1.0
             dfs = self._dfs(user_id, set(q_terms))
-            created = [item.created_ms for item in hits]
-            min_ms, max_ms = min(created), max(created)
-            query_vector = self.embedder.embed(query_text)
-            option_sets = [set(tokenize(option)) for option in options]
-            for hit in hits:
-                raw = bm25(q_terms, hit.tf, hit.doc_len, dfs, n_docs, avg_len)
-                hit.raw_bm25 = raw
-            max_bm25 = max(item.raw_bm25 for item in hits) or 1.0
-            for hit in hits:
-                features = self._features(
-                    hit,
-                    max_bm25=max_bm25,
-                    query_vector=query_vector,
-                    q_terms=q_terms,
-                    q_entities=q_entities,
-                    q_numbers=q_numbers,
-                    intent=intent,
-                    min_ms=min_ms,
-                    max_ms=max_ms,
-                    option_sets=option_sets,
-                )
-                hit.score = sum(self.weights.get(name, 0.0) * value for name, value in features.items())
-            self._promote_met_person_home(query_text, hits)
-            self._promote_own_current_home(query_text, hits)
-            self._promote_identity(query_text, hits)
-            self._promote_attribute_alias(query_text, hits)
-            self._promote_named_relation(query_text, hits)
-            self._promote_social_object(query_text, hits)
-            self._govern(query_text, intent, hits)
-            self._promote_graph(query_text, hits)
-            self._promote_timeline(query_text, hits)
-            self._promote_procedure(query_text, hits)
-            self._promote_care(query_text, hits)
-            self._promote_explicit(query_text, intent, hits)
-            self._shield_private(query_text, intent, hits)
-            self._demote_hearsay(query_text, intent, hits)
-            if self.settings.chronos:
-                self._chronos(query_text, hits)
-            hits.sort(key=lambda item: item.score, reverse=True)
-            pool = hits[: max(top_k * 4, 40)]
-            ranked = self._mmr(pool, top_k)
-            contexts = [
-                hit.content
-                for hit in sorted(hits, key=lambda item: item.raw_bm25, reverse=True)[:5]
-            ]
-            ranked = self.reranker.rerank(query_text, ranked, contexts if self.reranker.use_context else None)
-            budget = RESPONSE_IMAGE_BUDGET
-            results = []
-            total = len(ranked)
-            for index, hit in enumerate(ranked):
-                rendered, budget = self._render(hit, budget)
-                results.append(
-                    {
-                        "id": hit.public_id,
-                        "content": rendered,
-                        "score": round(1.0 - index / (total + 1), 6),
-                        "created_at": _iso(hit.created_ms),
-                    }
-                )
-            return results
+        created = [item.created_ms for item in hits]
+        min_ms, max_ms = min(created), max(created)
+        query_vector = self.embedder.embed(query_text)
+        option_sets = [set(tokenize(option)) for option in options]
+        for hit in hits:
+            raw = bm25(q_terms, hit.tf, hit.doc_len, dfs, n_docs, avg_len)
+            hit.raw_bm25 = raw
+        max_bm25 = max(item.raw_bm25 for item in hits) or 1.0
+        for hit in hits:
+            features = self._features(
+                hit,
+                max_bm25=max_bm25,
+                query_vector=query_vector,
+                q_terms=q_terms,
+                q_entities=q_entities,
+                q_numbers=q_numbers,
+                intent=intent,
+                min_ms=min_ms,
+                max_ms=max_ms,
+                option_sets=option_sets,
+            )
+            hit.score = sum(self.weights.get(name, 0.0) * value for name, value in features.items())
+        self._promote_met_person_home(query_text, hits)
+        self._promote_own_current_home(query_text, hits)
+        self._promote_identity(query_text, hits)
+        self._promote_attribute_alias(query_text, hits)
+        self._promote_named_relation(query_text, hits)
+        self._promote_social_object(query_text, hits)
+        self._govern(query_text, intent, hits)
+        self._promote_graph(query_text, hits)
+        self._promote_timeline(query_text, hits)
+        self._promote_procedure(query_text, hits)
+        self._promote_care(query_text, hits)
+        self._promote_explicit(query_text, intent, hits)
+        self._shield_private(query_text, intent, hits)
+        self._demote_hearsay(query_text, intent, hits)
+        if self.settings.chronos:
+            self._chronos(query_text, hits)
+        hits.sort(key=lambda item: item.score, reverse=True)
+        pool = hits[: max(top_k * 4, 40)]
+        ranked = self._mmr(pool, top_k)
+        contexts = [
+            hit.content
+            for hit in sorted(hits, key=lambda item: item.raw_bm25, reverse=True)[:5]
+        ]
+        ranked = self.reranker.rerank(query_text, ranked, contexts if self.reranker.use_context else None)
+        budget = RESPONSE_IMAGE_BUDGET
+        results = []
+        total = len(ranked)
+        for index, hit in enumerate(ranked):
+            rendered, budget = self._render(hit, budget)
+            results.append(
+                {
+                    "id": hit.public_id,
+                    "content": rendered,
+                    "score": round(1.0 - index / (total + 1), 6),
+                    "created_at": _iso(hit.created_ms),
+                }
+            )
+        return results
 
     def _cards(self, hits: list[_Hit]) -> list[tuple[str, str, str, _Hit]]:
         cards = []

@@ -6,6 +6,7 @@ import os
 import threading
 import time
 import hashlib
+import uuid
 
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
@@ -88,9 +89,10 @@ def _handle_add_inner(payload: dict):
         try:
             extra = llm_facts(settings, blob)
         except LLMExtractionError:
-            return JSONResponse(status_code=503,
-                                content={"detail": {"reason": "fact extraction unavailable; retry the same request_id"}},
-                                headers={"Retry-After": "2"})
+            # Raw source messages still go through the normal atomic persistence
+            # and indexing path below. Never acknowledge before store.add commits.
+            logger.warning("llm extraction unavailable; persisting indexed source messages")
+            extra = []
     try:
         store.add(
             request_id=str(payload.get("request_id") or ""),
@@ -113,6 +115,20 @@ def _handle_add_inner(payload: dict):
 
 
 def _handle_search(payload: dict):
+    started = time.monotonic()
+    ref = uuid.uuid4().hex[:12]
+    logger.info("search start ref=%s", ref)
+    try:
+        result = _handle_search_inner(payload)
+        status = result.status_code if isinstance(result, JSONResponse) else 200
+        logger.info("search complete ref=%s status=%s seconds=%.3f", ref, status, time.monotonic() - started)
+        return result
+    except Exception:
+        logger.exception("search unhandled ref=%s seconds=%.3f", ref, time.monotonic() - started)
+        raise
+
+
+def _handle_search_inner(payload: dict):
     options = payload.get("options")
     if options is not None and not isinstance(options, list):
         return _reason(422, "options must be a string array")

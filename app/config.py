@@ -7,7 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SYSTEM_NAME = "evidence-rank-memory"
-SYSTEM_VERSION = "0.4.1"
+SYSTEM_VERSION = "0.4.5"
 
 
 def load_env_file(path: Path | None = None) -> None:
@@ -74,6 +74,7 @@ class Settings:
     scheme_pref: bool = field(default_factory=lambda: os.environ.get("SCHEME_PREF", "1").strip() in {"1", "true", "yes"})
     scheme_hop: bool = field(default_factory=lambda: os.environ.get("SCHEME_HOP", "1").strip() in {"1", "true", "yes"})
     hop_residence_bonus: float = field(default_factory=lambda: float(os.environ.get("HOP_RESIDENCE_BONUS", "0.01")))
+    search_max_active: int = field(default_factory=lambda: int(os.environ.get("SEARCH_MAX_ACTIVE", "4")))
     reranker: bool = field(default_factory=lambda: os.environ.get("RERANKER", "1").strip() in {"1", "true", "yes"})
     reranker_model: str = field(default_factory=lambda: os.environ.get("RERANKER_MODEL", "BAAI/bge-reranker-base"))
     reranker_top_n: int = field(default_factory=lambda: int(os.environ.get("RERANKER_TOP_N", "20")))
