@@ -2,7 +2,7 @@
 
 # v0.4.1：网关输出与 Add 重试修复
 
-基于公开 v0.4.0 提交 `fffd6f0b29de873142706e0007937c7d9eaeef2a`。`SOURCE_MANIFEST.json` 记录该原始导入快照，不代表本修复后文件的哈希。
+基于公开 v0.4.0 提交 `fffd6f0b29de873142706e0007937c7d9eaeef2a`。本节仅描述当时的修复；仓库当前 `SOURCE_MANIFEST.json` 已更新为 v0.4.5 文件清单，不再是原始导入快照。
 
 ## 改动
 
