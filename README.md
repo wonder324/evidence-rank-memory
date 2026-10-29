@@ -2,7 +2,7 @@
 
 提供 Add / Search 接口的记忆检索服务。Add 保存对话并抽取事实；Search 在用户范围内融合 BM25、向量、实体、数字、时间及多跳线索，返回记忆证据，由调用方生成回答。可选使用 BGE cross-encoder 对候选结果重排。
 
-当前 app/ 源码与线上已部署 v0.4.5 一致。发布不包含运行数据库、密钥、虚拟环境、评测数据和模型权重。源码文件校验见 `SOURCE_MANIFEST.json`。历史网关修复见 [恢复说明](docs/RECOVERY.md)。
+2026-10-29 只读核对时，当前 app/ 源码与服务器 v0.4.5 文件哈希一致；该结论不证明整个 Full 期间版本未发生变化。发布不包含运行数据库、密钥、虚拟环境、评测数据和模型权重。源码文件校验见 `SOURCE_MANIFEST.json`。历史网关修复见 [恢复说明](docs/RECOVERY.md)。
 
 ## v0.4.5 更新
 
@@ -30,7 +30,7 @@ python -m app
 
 ## 接口
 
-- `GET /health`：返回 `{"status":"ok","system":"evidence-rank-memory","version":"0.4.1"}`。
+- `GET /health`：返回 `{"status":"ok","system":"evidence-rank-memory","version":"0.4.5"}`。
 - `POST /add`：保存一个用户会话的消息。
 - `POST /search`：按 `user_id` 检索记忆证据。
 
@@ -92,9 +92,9 @@ RERANKER_BLEND=0.45
 ## Docker
 
 ```bash
-docker build -t evidence-rank-memory:0.4.1 .
+docker build -t evidence-rank-memory:0.4.5 .
 docker run --env-file .env -p 8080:8080 \
-  -v "$(pwd)/data:/app/data" evidence-rank-memory:0.4.1
+  -v "$(pwd)/data:/app/data" evidence-rank-memory:0.4.5
 ```
 
 使用重排器时另外挂载模型目录，并将 `RERANKER_MODEL` 设为容器内路径。公网 HTTPS 可参考 `deploy/Caddyfile`，将域名替换为自己的域名。
@@ -105,4 +105,12 @@ docker run --env-file .env -p 8080:8080 \
 
 ## 网关兼容与恢复
 
-参见 [恢复说明](docs/RECOVERY.md)。开启 `LLM_EXTRACT_STRICT=1` 后，已启用的模型抽取若失败，将在该次 Add 写入前返回 503，调用方可使用相同 `request_id` 重试。已有成功 Add 的重试会先检查持久化幂等记录，避免重复模型调用。
+v0.4.5 的抽取器在 `LLM_EXTRACT_STRICT=1` 时会抛出抽取异常，但 Add 处理层捕获 `LLMExtractionError`，继续持久化并索引原始消息；因此该开关不再意味着 Add 必然返回 503。存储失败仍返回错误，成功仅在事务提交后返回。已有成功 Add 的重试先检查持久化幂等记录。v0.4.1 的旧行为仅作历史记录，见 [恢复说明](docs/RECOVERY.md)。
+
+## 评测复现与审核材料
+
+- [v0.4.5 方法、运行配置与复现边界](docs/EVALUATION_V045.md)
+- [来源、方法变化和实验资产说明](docs/PROVENANCE.md)
+- [版本时间线与待确认的审核证据](docs/AUDIT_STATUS.md)
+
+正式运行源码固定提交为 `579cafca5fad7d4993595de6f7c7420c958b5b88`；后续文档补正不会改写该提交或历史评测声明。该提交是否为平台最终绑定的 commit 仍需核对。离线 `.env.example` 只用于功能验证，不代表正式运行配置或评测分数复现。
